@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://yjqnbcttuvi1"]
+
+[ext_resource type="Script" path="res://options_from_title.gd" id="1_g1jfe"]
+[ext_resource type="Texture2D" uid="uid://03ysd3oaolou" path="res://ArtAssets/MainMenuButtonUnfocused.png" id="2_0xt7r"]
+
+[node name="Options From Title" type="Node"]
+script = ExtResource("1_g1jfe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resolution Selection" type="MenuButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Master Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Music Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Back Button" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_0xt7r")
+
+[connection signal="pressed" from="VBoxContainer/Back Button" to="." method="_on_back_button_pressed"]
