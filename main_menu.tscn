@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://dma74u6xmj1xd"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_ndihl"]
+[ext_resource type="Texture2D" uid="uid://03ysd3oaolou" path="res://ArtAssets/MainMenuButtonUnfocused.png" id="2_ern8f"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_ndihl")
+
+[node name="New Game Button" type="TextureButton" parent="."]
+offset_left = 440.0
+offset_top = 225.0
+offset_right = 640.0
+offset_bottom = 255.0
+texture_normal = ExtResource("2_ern8f")
+
+[node name="Label" type="Label" parent="New Game Button"]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 200.0
+offset_bottom = 30.0
+text = "New Game"
+
+[node name="Continue Button" type="TextureButton" parent="."]
+offset_left = 440.0
+offset_top = 259.0
+offset_right = 640.0
+offset_bottom = 289.0
+texture_normal = ExtResource("2_ern8f")
+
+[node name="Label" type="Label" parent="Continue Button"]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 200.0
+offset_bottom = 30.0
+text = "Continue"
+
+[node name="Options Button" type="TextureButton" parent="."]
+offset_left = 440.0
+offset_top = 293.0
+offset_right = 640.0
+offset_bottom = 323.0
+texture_normal = ExtResource("2_ern8f")
+
+[node name="Label" type="Label" parent="Options Button"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 201.0
+offset_bottom = 30.0
+text = "Options"
+
+[node name="Exit Button" type="TextureButton" parent="."]
+offset_left = 440.0
+offset_top = 327.0
+offset_right = 640.0
+offset_bottom = 357.0
+texture_normal = ExtResource("2_ern8f")
+
+[node name="Label" type="Label" parent="Exit Button"]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 200.0
+offset_bottom = 30.0
+text = "Exit"
+
+[node name="Game Logo" type="Sprite2D" parent="."]
+
+[node name="Title Screen Background" type="Sprite2D" parent="."]
+
+[connection signal="pressed" from="New Game Button" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Continue Button" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Options Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Exit Button" to="." method="_on_exit_button_pressed"]
