@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://yjqnbcttuvi1"]
 
-[ext_resource type="Script" path="res://options_from_title.gd" id="1_g1jfe"]
-[ext_resource type="Texture2D" uid="uid://03ysd3oaolou" path="res://ArtAssets/MainMenuButtonUnfocused.png" id="2_0xt7r"]
+[ext_resource type="Script" path="res://Scenes/options_from_title.gd" id="1_w38w8"]
+[ext_resource type="Texture2D" uid="uid://03ysd3oaolou" path="res://ArtAssets/MainMenuButtonUnfocused.png" id="2_houn3"]
 
 [node name="Options From Title" type="Node"]
-script = ExtResource("1_g1jfe")
+script = ExtResource("1_w38w8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -73,7 +73,7 @@ text = "Tutorial Dialogues"
 
 [node name="Back Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_0xt7r")
+texture_normal = ExtResource("2_houn3")
 
 [connection signal="item_selected" from="VBoxContainer/ResolutionOption/ResolutionDropdown" to="." method="_on_resolution_dropdown_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/Master Volume" to="." method="_on_master_volume_value_changed"]

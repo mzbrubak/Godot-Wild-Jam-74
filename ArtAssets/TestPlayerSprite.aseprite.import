@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cotld85hfc16b"
+path="res://.godot/imported/TestPlayerSprite.aseprite-9abf41af97c338b3f7f2b48a5a27f699.res"
+
+[deps]
+
+source_file="res://ArtAssets/TestPlayerSprite.aseprite"
+dest_files=["res://.godot/imported/TestPlayerSprite.aseprite-9abf41af97c338b3f7f2b48a5a27f699.res"]
+
+[params]
+

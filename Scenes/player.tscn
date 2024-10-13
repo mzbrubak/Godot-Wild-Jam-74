@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bynsrjsdfwnk3"]
+
+[ext_resource type="SpriteFrames" uid="uid://pvunmnn14ew4" path="res://ArtAssets/TestPlayerSprite.res" id="1_rjfj3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0t5iy"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0t5iy")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_rjfj3")

@@ -13,7 +13,7 @@ func _on_continue_button_pressed():
 
 func _on_options_button_pressed():
 	#Transition to options screen
-	get_tree().change_scene_to_file("res://options_from_title.tscn")
+	get_tree().change_scene_to_file("res://Scenes/options_from_title.tscn")
 
 
 func _on_exit_button_pressed():
