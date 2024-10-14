@@ -11,7 +11,7 @@ func _ready():
 	if err!=OK:
 		#guess you're stuck with the built-in defaults!  congrats on first boot-up
 		return
-	resolutionid=config.get_value("Video","resolutionid");
+	resolutionid=config.get_value("Video","resolutionid",0);
 	mastervolume=config.get_value("Audio","mastervolume",50);
 	musicvolume=config.get_value("Audio","musicvolume",50);
 	sfxvolume=config.get_value("Audio","sfxvolume",50);

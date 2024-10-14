@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://1rs7ilg6rm"]
+
+[ext_resource type="Script" path="res://PauseMenu.gd" id="1_dkcpq"]
+[ext_resource type="Texture2D" uid="uid://03ysd3oaolou" path="res://ArtAssets/MainMenuButtonUnfocused.png" id="2_l1tuj"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+visible = false
+script = ExtResource("1_dkcpq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResolutionOption" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ResolutionOption"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ResolutionDropdown" type="OptionButton" parent="VBoxContainer/ResolutionOption"]
+layout_mode = 2
+item_count = 6
+popup/item_0/text = "640x360"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1920x1080"
+popup/item_2/id = 2
+popup/item_3/text = "2560x1440"
+popup/item_3/id = 3
+popup/item_4/text = "3200x1800"
+popup/item_4/id = 4
+popup/item_5/text = "3840x2160"
+popup/item_5/id = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="Master Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="Music Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFX Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="Tutorial Dialogues" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+text = "Tutorial Dialogues"
+
+[node name="Back Button" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_l1tuj")
+
+[node name="Main Menu Button" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_l1tuj")
+
+[connection signal="item_selected" from="VBoxContainer/ResolutionOption/ResolutionDropdown" to="." method="_on_resolution_dropdown_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/Master Volume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Music Volume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SFX Volume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="toggled" from="VBoxContainer/Tutorial Dialogues" to="." method="_on_tutorial_dialogues_toggled"]
+[connection signal="pressed" from="VBoxContainer/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main Menu Button" to="." method="_on_main_menu_button_pressed"]
