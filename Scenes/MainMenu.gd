@@ -3,7 +3,7 @@ extends Node
 
 func _on_new_game_button_pressed():
 	#Load first scene
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/testmap.tscn");
 
 
 func _on_continue_button_pressed():
