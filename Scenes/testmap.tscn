@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4xwlv7pjcmsf"]
+[gd_scene load_steps=12 format=3 uid="uid://c4xwlv7pjcmsf"]
 
 [ext_resource type="Texture2D" uid="uid://bpxwlps1uc4jn" path="res://ArtAssets/lobby_bad.png" id="1_evm4j"]
 [ext_resource type="AudioStream" uid="uid://derywdioimvil" path="res://AudioSamples/MachineBeat2.wav" id="1_owcr2"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer2D.gd" id="4_fn7gl"]
 [ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="5_v2au3"]
 [ext_resource type="PackedScene" uid="uid://brlgx8da08bii" path="res://repairable_machine.tscn" id="6_1h4qt"]
+[ext_resource type="Script" path="res://Scenes/RepairableMachine.gd" id="8_ubhmg"]
+[ext_resource type="Texture2D" uid="uid://bv6e4crgva4vg" path="res://ArtAssets/TestPlayerSprite.png" id="9_e4xew"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y3ihg"]
 radius = 246.203
@@ -74,8 +76,16 @@ high_pass_filter/cutoff_sweep = 0.0181426
 
 [node name="RepairableMachine" parent="." instance=ExtResource("6_1h4qt")]
 position = Vector2(-141, 84)
+script = ExtResource("8_ubhmg")
+needs_catalyst = {}
+needs_component = {}
+altsprite = ExtResource("9_e4xew")
 
 [node name="RepairableMachine2" parent="." instance=ExtResource("6_1h4qt")]
 position = Vector2(-19, -35)
+script = ExtResource("8_ubhmg")
+needs_catalyst = {}
+needs_component = {}
+altsprite = ExtResource("9_e4xew")
 
 [connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]

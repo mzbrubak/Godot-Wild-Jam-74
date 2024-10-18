@@ -22,6 +22,16 @@ func _ready():
 	inventory["key2"]=0;
 	inventory["key3"]=0;
 
+func _input(event):
+	if event.is_action_pressed("Pause"):
+		pause_requested.emit();
+	if event.is_action_pressed("Interact"):
+		interact();
+	if event.is_action_pressed("ShowInventory"):
+		pass
+	if event.is_action_released("ShowInventory"):
+		pass
+
 func _physics_process(delta):
 	var direction = Input.get_vector("Left","Right","Up","Down");
 	if direction:
@@ -32,10 +42,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
-	if Input.is_action_just_pressed("Pause"):
-		pause_requested.emit();
-	if Input.is_action_just_pressed("Interact"):
-		interact()
+	pass
+	
 
 func register(object):
 	interactioncandidates.append(object);
@@ -44,8 +52,9 @@ func unregister(object):
 	interactioncandidates.erase(object);
 
 func interact():
+	print("Testing")
 	if interactioncandidates.size()==1:
-		interactioncandidates[0].on_interact()
+		interactioncandidates[0].on_interact(self)
 	elif interactioncandidates.size()>1:
 		interact_conflict_resolve()
 		
@@ -60,4 +69,19 @@ func interact_conflict_resolve():
 			maxdotproduct=dotproduct;
 			maxfacingobject=candidate;
 	if maxfacingobject!=null:
-		maxfacingobject.on_interact();
+		maxfacingobject.on_interact(self);
+
+func check_inventory(dict):
+	for item in dict:
+		if inventory[item]<dict[item]:
+			return false
+	return true
+
+func remove_from_inventory(dict):
+	#only call this after a successful check_inventory
+	for item in dict:
+		inventory[item]-=dict[item];
+
+func add_to_inventory(dict):
+	for item in dict:
+		inventory[item]+=dict[item];
