@@ -1,72 +1,103 @@
-[gd_scene load_steps=3 format=3 uid="uid://dma74u6xmj1xd"]
+[gd_scene load_steps=7 format=3 uid="uid://dma74u6xmj1xd"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_6hllo"]
 [ext_resource type="Texture2D" uid="uid://03ysd3oaolou" path="res://ArtAssets/MainMenuButtonUnfocused.png" id="2_bcjq6"]
+[ext_resource type="PackedScene" uid="uid://bjjrp7xgxo84b" path="res://Scenes/credits_screen.tscn" id="3_0c3v7"]
+[ext_resource type="Texture2D" uid="uid://c8edpq7lmcpc8" path="res://ArtAssets/74-All-Cards.png" id="3_3hyep"]
+[ext_resource type="PackedScene" uid="uid://bi405715cekqm" path="res://Scenes/TitleOptions.tscn" id="4_4fxmr"]
+[ext_resource type="Script" path="res://Scenes/TitleOptions.gd" id="5_w8i56"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_6hllo")
 
-[node name="New Game Button" type="TextureButton" parent="."]
-offset_left = 440.0
-offset_top = 225.0
-offset_right = 640.0
-offset_bottom = 255.0
+[node name="Game Logo" type="Sprite2D" parent="."]
+
+[node name="Title Screen Background" type="Sprite2D" parent="."]
+
+[node name="MainMenuUI" type="CanvasLayer" parent="."]
+
+[node name="MenuButtonContainer" type="VBoxContainer" parent="MainMenuUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -166.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="New Game Button" type="TextureButton" parent="MainMenuUI/MenuButtonContainer"]
+layout_mode = 2
 texture_normal = ExtResource("2_bcjq6")
 
-[node name="Label" type="Label" parent="New Game Button"]
+[node name="Label" type="Label" parent="MainMenuUI/MenuButtonContainer/New Game Button"]
 layout_mode = 0
 offset_left = 14.0
 offset_right = 200.0
 offset_bottom = 30.0
 text = "New Game"
 
-[node name="Continue Button" type="TextureButton" parent="."]
-offset_left = 440.0
-offset_top = 259.0
-offset_right = 640.0
-offset_bottom = 289.0
+[node name="Continue Button" type="TextureButton" parent="MainMenuUI/MenuButtonContainer"]
+layout_mode = 2
 texture_normal = ExtResource("2_bcjq6")
 
-[node name="Label" type="Label" parent="Continue Button"]
+[node name="Label" type="Label" parent="MainMenuUI/MenuButtonContainer/Continue Button"]
 layout_mode = 0
 offset_left = 14.0
 offset_right = 200.0
 offset_bottom = 30.0
 text = "Continue"
 
-[node name="Options Button" type="TextureButton" parent="."]
-offset_left = 440.0
-offset_top = 293.0
-offset_right = 640.0
-offset_bottom = 323.0
+[node name="Options Button" type="TextureButton" parent="MainMenuUI/MenuButtonContainer"]
+layout_mode = 2
 texture_normal = ExtResource("2_bcjq6")
 
-[node name="Label" type="Label" parent="Options Button"]
+[node name="Label" type="Label" parent="MainMenuUI/MenuButtonContainer/Options Button"]
 layout_mode = 0
 offset_left = 13.0
 offset_right = 201.0
 offset_bottom = 30.0
 text = "Options"
 
-[node name="Exit Button" type="TextureButton" parent="."]
-offset_left = 440.0
-offset_top = 327.0
-offset_right = 640.0
-offset_bottom = 357.0
+[node name="Credits Button" type="TextureButton" parent="MainMenuUI/MenuButtonContainer"]
+layout_mode = 2
 texture_normal = ExtResource("2_bcjq6")
 
-[node name="Label" type="Label" parent="Exit Button"]
+[node name="Label" type="Label" parent="MainMenuUI/MenuButtonContainer/Credits Button"]
 layout_mode = 0
-offset_left = 14.0
-offset_right = 200.0
-offset_bottom = 30.0
+offset_left = 13.0
+offset_top = 3.0
+offset_right = 68.0
+offset_bottom = 26.0
+text = "Credits"
+
+[node name="Exit Button" type="TextureButton" parent="MainMenuUI/MenuButtonContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_bcjq6")
+
+[node name="Label" type="Label" parent="MainMenuUI/MenuButtonContainer/Exit Button"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 3.0
+offset_right = 201.0
+offset_bottom = 33.0
 text = "Exit"
 
-[node name="Game Logo" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="MainMenuUI"]
+position = Vector2(69, 328)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_3hyep")
 
-[node name="Title Screen Background" type="Sprite2D" parent="."]
+[node name="Credits Screen" parent="." instance=ExtResource("3_0c3v7")]
 
-[connection signal="pressed" from="New Game Button" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="Continue Button" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="Options Button" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="Exit Button" to="." method="_on_exit_button_pressed"]
+[node name="TitleOptionsLayer" parent="." instance=ExtResource("4_4fxmr")]
+script = ExtResource("5_w8i56")
+
+[connection signal="pressed" from="MainMenuUI/MenuButtonContainer/New Game Button" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Continue Button" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Options Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Credits Button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="_back_button_pressed" from="Credits Screen" to="." method="_on_credits_screen__back_button_pressed"]
+[connection signal="_back_button_pressed" from="TitleOptionsLayer" to="." method="_on_title_options_layer__back_button_pressed"]

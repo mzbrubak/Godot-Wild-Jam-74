@@ -34,12 +34,15 @@ func set_resolution(index):
 	
 func set_mastervolume(value):
 	mastervolume=value;
+	AudioServer.set_bus_volume_db(0,linear_to_db(value/100));
 	
 func set_musicvolume(value):
 	musicvolume=value;
+	AudioServer.set_bus_volume_db(1,linear_to_db(value/100));
 
 func set_sfxvolume(value):
 	sfxvolume=value;
+	AudioServer.set_bus_volume_db(2,linear_to_db(value/100));
 	
 func set_tutorialmessages(toggled):
 	tutorialmessages=toggled;
