@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dma74u6xmj1xd"]
+[gd_scene load_steps=6 format=3 uid="uid://dma74u6xmj1xd"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_6hllo"]
 [ext_resource type="Texture2D" uid="uid://03ysd3oaolou" path="res://ArtAssets/MainMenuButtonUnfocused.png" id="2_bcjq6"]
 [ext_resource type="PackedScene" uid="uid://bjjrp7xgxo84b" path="res://Scenes/credits_screen.tscn" id="3_0c3v7"]
 [ext_resource type="Texture2D" uid="uid://c8edpq7lmcpc8" path="res://ArtAssets/74-All-Cards.png" id="3_3hyep"]
 [ext_resource type="PackedScene" uid="uid://bi405715cekqm" path="res://Scenes/TitleOptions.tscn" id="4_4fxmr"]
-[ext_resource type="Script" path="res://Scenes/TitleOptions.gd" id="5_w8i56"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_6hllo")
@@ -92,7 +91,6 @@ texture = ExtResource("3_3hyep")
 [node name="Credits Screen" parent="." instance=ExtResource("3_0c3v7")]
 
 [node name="TitleOptionsLayer" parent="." instance=ExtResource("4_4fxmr")]
-script = ExtResource("5_w8i56")
 
 [connection signal="pressed" from="MainMenuUI/MenuButtonContainer/New Game Button" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Continue Button" to="." method="_on_continue_button_pressed"]
