@@ -30,9 +30,12 @@ current = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_3oxuq")
+occluder_light_mask = 8
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
 texture = ExtResource("4_nysn5")
+texture_scale = 2.0
 
 [node name="Inventory" type="CanvasLayer" parent="."]
 visible = false
@@ -45,3 +48,35 @@ offset_bottom = 49.0
 layout_mode = 2
 text = "Inventory:
 Nothing.  Nothing at all."
+
+[node name="Dialogue" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Dialogue"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -120.0
+offset_right = 320.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+
+[node name="DialogueBox" type="ColorRect" parent="Dialogue/HFlowContainer"]
+custom_minimum_size = Vector2(640, 120)
+layout_mode = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Text" type="Label" parent="Dialogue/HFlowContainer/DialogueBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 600.0
+offset_bottom = 88.5
+grow_vertical = 2
+autowrap_mode = 2

@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Settings="*res://PlayerData/settings.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SaveData="*res://PlayerData/SaveData.gd"
 
 [dialogic]
@@ -60,7 +59,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg")
 
 [input]
 
@@ -143,3 +142,4 @@ ShowInventory={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

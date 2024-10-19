@@ -6,12 +6,16 @@ var searched=false;
 @export var empty_sprite:Texture2D
 
 func on_interact(player):
+	var textout
 	if searched:
-		print(empty_text)
+		textout=empty_text
+		player.show_text(textout)
 		return
 	#code only gets here if not searched yet
-	print(search_text)
+	textout=search_text
+	player.show_text(textout)
 	player.add_to_inventory(contents);
 	contents.clear();
 	self.texture=empty_sprite;
+	searched=true
 	#do something to save file

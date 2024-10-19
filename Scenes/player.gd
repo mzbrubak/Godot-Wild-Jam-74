@@ -2,10 +2,12 @@ extends CharacterBody2D
 const RUNSPEED = 300
 const WALKSPEED = 100
 signal pause_requested
+signal dialoguepause_requested
 var facing=Vector2(0,0);
 var interactioncandidates=[];
 var inventory:Dictionary
 var movespeed=WALKSPEED
+var not_busy=1
 
 func _ready():
 	inventory["small_screwdriver"]=0;
@@ -26,11 +28,10 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("Pause"):
 		pause_requested.emit();
-	if event.is_action_pressed("Interact") and Dialogic.current_timeline==null:
+	if event.is_action_pressed("Interact"):
 		interact();
 	if event.is_action_pressed("ShowInventory"):
 		$Inventory.visible=true
-		print("Yes this is working")
 	if event.is_action_released("ShowInventory"):
 		$Inventory.visible=false
 	if event.is_action_pressed("AltSpeed"):
@@ -42,7 +43,7 @@ func _physics_process(delta):
 	var direction = Input.get_vector("Left","Right","Up","Down");
 	if direction:
 		facing=direction;#fallback for interaction clashing
-		velocity = direction * movespeed
+		velocity = direction * movespeed*not_busy
 	else:
 		velocity=Vector2(0,0)
 	move_and_slide()
@@ -57,11 +58,14 @@ func unregister(object):
 	interactioncandidates.erase(object);
 
 func interact():
-	print("Testing")
-	if interactioncandidates.size()==1:
-		interactioncandidates[0].on_interact(self)
-	elif interactioncandidates.size()>1:
-		interact_conflict_resolve()
+	if not_busy:
+		if interactioncandidates.size()==1:
+			interactioncandidates[0].on_interact(self)
+		elif interactioncandidates.size()>1:
+			interact_conflict_resolve()
+	else:
+		hide_text();
+		dialogueunpause();
 		
 func interact_conflict_resolve():
 	#decide which object is most directly being looked at by the player.  In event of ties, first come first serve
@@ -86,7 +90,44 @@ func remove_from_inventory(dict):
 	#only call this after a successful check_inventory
 	for item in dict:
 		inventory[item]-=dict[item];
+	set_inventory_text()
 
 func add_to_inventory(dict):
 	for item in dict:
 		inventory[item]+=dict[item];
+	set_inventory_text()
+
+func set_inventory_text():
+	var inventory_text="Inventory:\n";
+	if inventory["crowbar"]>0:
+		inventory_text+=("Crowbars: "+str(inventory["crowbar"])+"\n")
+	var key_count=inventory["stairkey"]+inventory["key1"]+inventory["key2"]+inventory["key3"]
+	if key_count>0:
+		inventory_text+=("Keys: "+str(key_count)+"\n")
+	var screwdriver_count=inventory["small_screwdriver"]+inventory["medium_screwdriver"]+inventory["large_screwdriver"]
+	if screwdriver_count>0:
+		inventory_text+=("Screwdrivers: "+str(screwdriver_count)+"\n")
+	var part_count=inventory["small_capacitor"]+inventory["large_capacitor"]+inventory["wire"]+inventory["switch"]+inventory["logic_chip_a"]+inventory["logic_chip_b"]
+	if part_count>0:
+		inventory_text+=("Parts: "+str(part_count)+"\n")
+	if inventory_text=="Inventory:\n":
+		inventory_text+="Nothing.  Nothing at all.\n"
+	$Inventory/VBoxContainer/Label.text=inventory_text;
+
+func show_text(string):
+	$Dialogue/HFlowContainer/DialogueBox/Text.text=string;
+	$Dialogue.visible=true
+	dialoguepause()
+
+func hide_text():
+	$Dialogue.visible=false
+
+func dialoguepause():
+	dialoguepause_requested.emit(true)
+	not_busy=0
+	pass
+	
+func dialogueunpause():
+	dialoguepause_requested.emit(false)
+	not_busy=1
+	pass
