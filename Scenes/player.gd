@@ -5,6 +5,7 @@ signal pause_requested
 var facing=Vector2(0,0);
 var interactioncandidates=[];
 var inventory:Dictionary
+var movespeed=WALKSPEED
 
 func _ready():
 	inventory["small_screwdriver"]=0;
@@ -25,25 +26,29 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("Pause"):
 		pause_requested.emit();
-	if event.is_action_pressed("Interact"):
+	if event.is_action_pressed("Interact") and Dialogic.current_timeline==null:
 		interact();
 	if event.is_action_pressed("ShowInventory"):
-		pass
+		$Inventory.visible=true
+		print("Yes this is working")
 	if event.is_action_released("ShowInventory"):
-		pass
+		$Inventory.visible=false
+	if event.is_action_pressed("AltSpeed"):
+		movespeed=RUNSPEED;
+	if event.is_action_released("AltSpeed"):
+		movespeed=WALKSPEED;
 
 func _physics_process(delta):
 	var direction = Input.get_vector("Left","Right","Up","Down");
 	if direction:
 		facing=direction;#fallback for interaction clashing
-		velocity = direction * RUNSPEED
+		velocity = direction * movespeed
 	else:
 		velocity=Vector2(0,0)
 	move_and_slide()
 
 func _process(delta):
 	pass
-	
 
 func register(object):
 	interactioncandidates.append(object);

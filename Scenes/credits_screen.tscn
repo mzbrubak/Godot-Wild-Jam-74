@@ -21,7 +21,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "This is a solo project by \"Felix DuBois\".  All assets are original.
+text = "This is a solo project by Felix DuBois.  All assets are original.
 The following tools were used in the creation of this project:
 Godot 4.2 with the following plugins:
 	AsepriteWizard
@@ -35,6 +35,17 @@ horizontal_alignment = 1
 
 [node name="BackButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture_normal = ExtResource("2_sadqi")
+
+[node name="Label" type="Label" parent="VBoxContainer/BackButton"]
+layout_mode = 0
+offset_left = 75.5
+offset_top = 2.5
+offset_right = 115.5
+offset_bottom = 25.5
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

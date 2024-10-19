@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://brlgx8da08bii"]
 
 [ext_resource type="Texture2D" uid="uid://6unqhopghkja" path="res://icon.svg" id="1_ji6ay"]
-[ext_resource type="Script" path="res://Scenes/InteractableObject.gd" id="2_50cdl"]
+[ext_resource type="Script" path="res://Scenes/RepairableMachine.gd" id="2_18d2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug43"]
 size = Vector2(128, 128)
@@ -11,7 +11,7 @@ radius = 126.063
 
 [node name="RepairableMachine" type="Sprite2D"]
 texture = ExtResource("1_ji6ay")
-script = ExtResource("2_50cdl")
+script = ExtResource("2_18d2s")
 
 [node name="Hitbox" type="StaticBody2D" parent="."]
 collision_layer = 4

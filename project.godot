@@ -19,11 +19,14 @@ config/icon="res://icon.svg"
 
 Settings="*res://PlayerData/settings.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+SaveData="*res://PlayerData/SaveData.gd"
 
 [dialogic]
 
 directories/dch_directory={}
-directories/dtl_directory={}
+directories/dtl_directory={
+"TestDialog": "res://Dialogs/TestDialog.dtl"
+}
 glossary/default_case_sensitive=true
 layout/style_list=[]
 layout/default_style="Default"
