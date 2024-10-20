@@ -4,6 +4,7 @@ var lightsout:bool=false
 var pickup_flag_list=[false,false,false,false,false,false,false]
 var searchable_flag_list=[false,false,false,false,false,false,false]
 var inventory:Dictionary
+var from="lobby"
 func _ready():
 	inventory["small_screwdriver"]=0;
 	inventory["medium_screwdriver"]=0;

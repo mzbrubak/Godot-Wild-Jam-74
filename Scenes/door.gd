@@ -10,6 +10,7 @@ func on_interact(player):
 		if player.check_inventory({keyid: 1}):
 			player.show_text(opentext)
 			player.dialoguepause_requested.connect(on_interact_end)
+			player_ref=player
 		else:
 			player.show_text(lockedtext)
 	else:

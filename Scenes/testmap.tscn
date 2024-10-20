@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4xwlv7pjcmsf"]
+[gd_scene load_steps=16 format=3 uid="uid://c4xwlv7pjcmsf"]
 
+[ext_resource type="Script" path="res://Scenes/testmap.gd" id="1_8200b"]
 [ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="1_p1ei0"]
 [ext_resource type="PackedScene" uid="uid://1rs7ilg6rm" path="res://Scenes/PauseMenu.tscn" id="2_0rqrk"]
 [ext_resource type="Texture2D" uid="uid://bti350dolbidc" path="res://ArtAssets/floor.png" id="2_vhmqu"]
@@ -29,6 +30,7 @@ normal = Vector2(0, 1)
 distance = -70.0
 
 [node name="Node" type="Node"]
+script = ExtResource("1_8200b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

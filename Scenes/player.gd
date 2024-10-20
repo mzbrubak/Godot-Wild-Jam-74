@@ -33,9 +33,33 @@ func _physics_process(delta):
 	if direction:
 		facing=direction;#fallback for interaction clashing
 		velocity = direction * movespeed*not_busy
+		set_animation(direction)
 	else:
 		velocity=Vector2(0,0)
+		$AnimationPlayer.stop()
 	move_and_slide()
+
+func set_animation(direction):
+	var x=direction.x;
+	var y=direction.y;
+	if movespeed==RUNSPEED:
+		if x>0 and abs(x)>abs(y):
+			$AnimationPlayer.current_animation="RightFast"
+		elif x<0 and abs(x)>abs(y):
+			$AnimationPlayer.current_animation="LeftFast"
+		elif y<0:
+			$AnimationPlayer.current_animation="UpFast"
+		elif y>0:
+			$AnimationPlayer.current_animation="DownFast"
+	elif movespeed==WALKSPEED:
+		if x>0 and abs(x)>abs(y):
+			$AnimationPlayer.current_animation="Right"
+		elif x<0 and abs(x)>abs(y):
+			$AnimationPlayer.current_animation="Left"
+		elif y<0:
+			$AnimationPlayer.current_animation="Up"
+		elif y>0:
+			$AnimationPlayer.current_animation="Down"
 
 func _process(delta):
 	pass

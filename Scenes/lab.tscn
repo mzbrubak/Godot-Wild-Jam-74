@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b4fvqw5fkcies"]
+[gd_scene load_steps=18 format=3 uid="uid://b4fvqw5fkcies"]
 
 [ext_resource type="Script" path="res://Scenes/lab.gd" id="1_1arhn"]
 [ext_resource type="Texture2D" uid="uid://b24g67ktrwffl" path="res://ArtAssets/Lab_GroundFloor.png" id="1_61pid"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://p86qynwcwqa0" path="res://Scenes/gettable_object.tscn" id="5_2nkgk"]
 [ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="5_u7uxv"]
 [ext_resource type="Texture2D" uid="uid://cxe0fu78dwhlo" path="res://ArtAssets/keys.png" id="6_0evp8"]
+[ext_resource type="PackedScene" uid="uid://4udjmo7bjf8j" path="res://Scenes/ghost.tscn" id="9_nle2v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wfpkm"]
 radius = 6.0
@@ -56,26 +57,15 @@ position = Vector2(306, -114)
 texture = ExtResource("6_0evp8")
 hframes = 2
 vframes = 2
+contents = {
+"stairkey": 1
+}
 pickuptext = "You got the stair key!"
 
 [node name="HitboxShape" parent="stairkey/Hitbox" index="0"]
 shape = SubResource("CircleShape2D_wfpkm")
 
 [node name="InteractionRangeShape" parent="stairkey/InteractionRange" index="0"]
-shape = SubResource("CircleShape2D_17lod")
-
-[node name="bronzekey" parent="stairkey" instance=ExtResource("5_2nkgk")]
-position = Vector2(-23, 78)
-texture = ExtResource("6_0evp8")
-hframes = 2
-vframes = 2
-frame = 3
-pickuptext = "You got a bronze key!"
-
-[node name="HitboxShape" parent="stairkey/bronzekey/Hitbox" index="0"]
-shape = SubResource("CircleShape2D_wfpkm")
-
-[node name="InteractionRangeShape" parent="stairkey/bronzekey/InteractionRange" index="0"]
 shape = SubResource("CircleShape2D_17lod")
 
 [node name="Mezzanine" type="Sprite2D" parent="."]
@@ -116,6 +106,9 @@ texture = ExtResource("6_0evp8")
 hframes = 2
 vframes = 2
 frame = 2
+contents = {
+"key2": 1
+}
 pickuptext = "You got a silver key!"
 
 [node name="HitboxShape" parent="silverkey/Hitbox" index="0"]
@@ -130,6 +123,9 @@ texture = ExtResource("6_0evp8")
 hframes = 2
 vframes = 2
 frame = 1
+contents = {
+"key3": 1
+}
 pickuptext = "You got a gold key!"
 
 [node name="HitboxShape" parent="goldkey/Hitbox" index="0"]
@@ -138,7 +134,27 @@ shape = SubResource("CircleShape2D_wfpkm")
 [node name="InteractionRangeShape" parent="goldkey/InteractionRange" index="0"]
 shape = SubResource("CircleShape2D_17lod")
 
+[node name="bronzekey" parent="." instance=ExtResource("5_2nkgk")]
+position = Vector2(283, -36)
+texture = ExtResource("6_0evp8")
+hframes = 2
+vframes = 2
+frame = 3
+contents = {
+"key1": 1
+}
+pickuptext = "You got a bronze key!"
+
+[node name="HitboxShape" parent="bronzekey/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_wfpkm")
+
+[node name="InteractionRangeShape" parent="bronzekey/InteractionRange" index="0"]
+shape = SubResource("CircleShape2D_17lod")
+
+[node name="Ghost" parent="." instance=ExtResource("9_nle2v")]
+position = Vector2(-138, 128)
+
 [editable path="stairkey"]
-[editable path="stairkey/bronzekey"]
 [editable path="silverkey"]
 [editable path="goldkey"]
+[editable path="bronzekey"]

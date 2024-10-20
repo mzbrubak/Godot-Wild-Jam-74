@@ -132,7 +132,8 @@ ShowInventory={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="StaticObjects"
 2d_physics/layer_4="MovableObjects"
-2d_physics/layer_5="NoisyGround"
+2d_physics/layer_5="SoundRanges"
+2d_physics/layer_6="Ghost"
 
 [physics]
 
