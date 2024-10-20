@@ -26,3 +26,7 @@ func _on_tutorial_dialogues_toggled(toggled_on):
 
 func _on_resolution_dropdown_item_selected(index):
 	Settings.set_resolution(index);
+
+
+func _on_player_pause_requested():
+	pass # Replace with function body.

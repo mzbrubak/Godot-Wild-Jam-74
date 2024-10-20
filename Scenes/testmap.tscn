@@ -70,7 +70,6 @@ high_pass_filter/cutoff_frequency = 0.131964
 high_pass_filter/cutoff_sweep = 0.0181426
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_y3fk6")
 

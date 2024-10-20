@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4fvqw5fkcies"]
+[gd_scene load_steps=20 format=3 uid="uid://b4fvqw5fkcies"]
 
 [ext_resource type="Script" path="res://Scenes/lab.gd" id="1_1arhn"]
 [ext_resource type="Texture2D" uid="uid://b24g67ktrwffl" path="res://ArtAssets/Lab_GroundFloor.png" id="1_61pid"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="5_u7uxv"]
 [ext_resource type="Texture2D" uid="uid://cxe0fu78dwhlo" path="res://ArtAssets/keys.png" id="6_0evp8"]
 [ext_resource type="PackedScene" uid="uid://4udjmo7bjf8j" path="res://Scenes/ghost.tscn" id="9_nle2v"]
+[ext_resource type="PackedScene" uid="uid://1rs7ilg6rm" path="res://Scenes/PauseMenu.tscn" id="10_p7m80"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wfpkm"]
 radius = 6.0
@@ -36,6 +37,9 @@ size = Vector2(593, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqagn"]
 size = Vector2(4, 33)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8k3t5"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Lab" type="Node"]
 script = ExtResource("1_1arhn")
@@ -153,6 +157,14 @@ shape = SubResource("CircleShape2D_17lod")
 
 [node name="Ghost" parent="." instance=ExtResource("9_nle2v")]
 position = Vector2(-138, 128)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_8k3t5")
+navigation_layers = 0
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_p7m80")]
+
+[connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]
 
 [editable path="stairkey"]
 [editable path="silverkey"]
