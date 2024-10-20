@@ -1,6 +1,10 @@
 extends Node
 var last_entered="down"
 var rng=RandomNumberGenerator.new()
+
+func _ready():
+	SaveData.from="Stairs"
+
 func _on_down_entered(_player):
 	if last_entered=="mid":
 		$Map.frame=1;

@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://3mllxmfk5t88"]
+[gd_scene load_steps=18 format=3 uid="uid://3mllxmfk5t88"]
 
 [ext_resource type="Texture2D" uid="uid://c15myl8aomuvy" path="res://ArtAssets/Layer 2.png" id="1_nfly6"]
 [ext_resource type="Script" path="res://Scenes/stairs.gd" id="1_xml4r"]
 [ext_resource type="PackedScene" uid="uid://rsuxbe2c44kc" path="res://Scenes/door.tscn" id="2_idpg4"]
 [ext_resource type="PackedScene" uid="uid://1rs7ilg6rm" path="res://Scenes/PauseMenu.tscn" id="2_puovv"]
 [ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="3_opiiy"]
-[ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="3_ovhya"]
 [ext_resource type="PackedScene" uid="uid://p86qynwcwqa0" path="res://Scenes/gettable_object.tscn" id="6_7477n"]
 [ext_resource type="Texture2D" uid="uid://cu8x6wvydxwnd" path="res://ArtAssets/crowbar.png" id="8_w26d3"]
 
@@ -52,7 +51,6 @@ hframes = 2
 frame = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_puovv")]
-script = ExtResource("3_ovhya")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)

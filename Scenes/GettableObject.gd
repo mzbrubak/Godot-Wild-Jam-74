@@ -1,6 +1,7 @@
 extends "InteractableObject.gd"
 @export var contents:Dictionary
 @export var pickuptext:String
+signal rebake_navi
 
 func on_interact(player):
 	player.show_text(pickuptext)
@@ -8,3 +9,4 @@ func on_interact(player):
 	player.unregister(self);
 	#do something to savefile
 	self.queue_free();
+	rebake_navi.emit()

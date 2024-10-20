@@ -3,5 +3,9 @@ extends Node
 func _ready():
 	SaveData.lightsout=true;
 	$Player/PointLight2D.enabled=true
-	$Player/QuietFootstepRange.body_entered.connect($Ghost.IHEARYOU)
-	$Player/LoudFootstepRange.body_entered.connect($Ghost.IHEARYOU)
+	$Player/QuietFootstepRange.IMHERE.connect($Ghost.IHEARYOU)
+	$Player/LoudFootstepRange.IMHERE.connect($Ghost.IHEARYOU)
+	SaveData.from="Lab"
+
+func rebake_navi():
+	$NavigationRegion2D.bake_navigation_polygon()

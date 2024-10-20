@@ -85,7 +85,7 @@ lockedtext = "The sign on the door reads \"STAIRS OUT OF ORDER\".  The door is l
 destination = "res://Scenes/stairs.tscn"
 
 [node name="Player" parent="." instance=ExtResource("5_ivl1m")]
-position = Vector2(-61, 5)
+position = Vector2(-62, 5)
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
@@ -134,6 +134,8 @@ texture = ExtResource("6_x1ub3")
 texture_scale = 6.0
 
 [node name="PauseMenu" parent="." instance=ExtResource("9_1beuw")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="THE_VOID/Area2D" to="THE_VOID" method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="THE_VOID/Area2D" to="THE_VOID" method="_on_interaction_range_body_exited"]
