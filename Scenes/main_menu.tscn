@@ -37,17 +37,6 @@ offset_right = 200.0
 offset_bottom = 30.0
 text = "New Game"
 
-[node name="Continue Button" type="TextureButton" parent="MainMenuUI/MenuButtonContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_bcjq6")
-
-[node name="Label" type="Label" parent="MainMenuUI/MenuButtonContainer/Continue Button"]
-layout_mode = 0
-offset_left = 14.0
-offset_right = 200.0
-offset_bottom = 30.0
-text = "Continue"
-
 [node name="Options Button" type="TextureButton" parent="MainMenuUI/MenuButtonContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_bcjq6")
@@ -93,7 +82,6 @@ texture = ExtResource("3_3hyep")
 [node name="TitleOptionsLayer" parent="." instance=ExtResource("4_4fxmr")]
 
 [connection signal="pressed" from="MainMenuUI/MenuButtonContainer/New Game Button" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Continue Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Options Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Credits Button" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Exit Button" to="." method="_on_exit_button_pressed"]

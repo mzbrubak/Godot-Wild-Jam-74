@@ -10,20 +10,9 @@ var movespeed=WALKSPEED
 var not_busy=1
 
 func _ready():
-	inventory["small_screwdriver"]=0;
-	inventory["medium_screwdriver"]=0;
-	inventory["large_screwdriver"]=0;
-	inventory["crowbar"]=0;
-	inventory["stairkey"]=0;
-	inventory["small_capacitor"]=0;
-	inventory["large_capacitor"]=0;
-	inventory["logic_chip_a"]=0;
-	inventory["logic_chip_b"]=0;
-	inventory["switch"]=0;
-	inventory["wire"]=0;
-	inventory["key1"]=0;
-	inventory["key2"]=0;
-	inventory["key3"]=0;
+	inventory=SaveData.inventory
+	set_inventory_text()
+	$PointLight2D.enabled=SaveData.lightsout
 
 func _input(event):
 	if event.is_action_pressed("Pause"):

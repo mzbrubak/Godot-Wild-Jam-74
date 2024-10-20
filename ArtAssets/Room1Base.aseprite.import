@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b65rck7laapx8"
+path="res://.godot/imported/Room1Base.aseprite-7796ea25dec714da5c278dc01075b3f3.res"
+
+[deps]
+
+source_file="res://ArtAssets/Room1Base.aseprite"
+dest_files=["res://.godot/imported/Room1Base.aseprite-7796ea25dec714da5c278dc01075b3f3.res"]
+
+[params]
+

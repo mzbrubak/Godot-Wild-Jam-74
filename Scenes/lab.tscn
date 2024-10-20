@@ -1,0 +1,144 @@
+[gd_scene load_steps=17 format=3 uid="uid://b4fvqw5fkcies"]
+
+[ext_resource type="Script" path="res://Scenes/lab.gd" id="1_1arhn"]
+[ext_resource type="Texture2D" uid="uid://b24g67ktrwffl" path="res://ArtAssets/Lab_GroundFloor.png" id="1_61pid"]
+[ext_resource type="Texture2D" uid="uid://dtp4k7k8x71rh" path="res://ArtAssets/Lab_Mezzanine.png" id="2_iw1m8"]
+[ext_resource type="Texture2D" uid="uid://bfpqioedooiyr" path="res://ArtAssets/Lab_Ceiling Chains.png" id="3_38xy6"]
+[ext_resource type="PackedScene" uid="uid://rsuxbe2c44kc" path="res://Scenes/door.tscn" id="4_c2783"]
+[ext_resource type="PackedScene" uid="uid://p86qynwcwqa0" path="res://Scenes/gettable_object.tscn" id="5_2nkgk"]
+[ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="5_u7uxv"]
+[ext_resource type="Texture2D" uid="uid://cxe0fu78dwhlo" path="res://ArtAssets/keys.png" id="6_0evp8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfpkm"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17lod"]
+radius = 11.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kwso7"]
+distance = -177.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y7bmc"]
+normal = Vector2(0, 1)
+distance = -125.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yuwlo"]
+normal = Vector2(1, 0)
+distance = -317.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_05f3t"]
+normal = Vector2(-1, 0)
+distance = -317.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdlp0"]
+size = Vector2(593, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqagn"]
+size = Vector2(4, 33)
+
+[node name="Lab" type="Node"]
+script = ExtResource("1_1arhn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Floor" type="Sprite2D" parent="."]
+texture = ExtResource("1_61pid")
+
+[node name="Door" parent="." instance=ExtResource("4_c2783")]
+position = Vector2(-296, -153)
+destination = "res://Scenes/hallway.tscn"
+
+[node name="Player" parent="." instance=ExtResource("5_u7uxv")]
+position = Vector2(-296, -135)
+
+[node name="stairkey" parent="." instance=ExtResource("5_2nkgk")]
+position = Vector2(306, -114)
+texture = ExtResource("6_0evp8")
+hframes = 2
+vframes = 2
+pickuptext = "You got the stair key!"
+
+[node name="HitboxShape" parent="stairkey/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_wfpkm")
+
+[node name="InteractionRangeShape" parent="stairkey/InteractionRange" index="0"]
+shape = SubResource("CircleShape2D_17lod")
+
+[node name="bronzekey" parent="stairkey" instance=ExtResource("5_2nkgk")]
+position = Vector2(-23, 78)
+texture = ExtResource("6_0evp8")
+hframes = 2
+vframes = 2
+frame = 3
+pickuptext = "You got a bronze key!"
+
+[node name="HitboxShape" parent="stairkey/bronzekey/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_wfpkm")
+
+[node name="InteractionRangeShape" parent="stairkey/bronzekey/InteractionRange" index="0"]
+shape = SubResource("CircleShape2D_17lod")
+
+[node name="Mezzanine" type="Sprite2D" parent="."]
+texture = ExtResource("2_iw1m8")
+
+[node name="Chains" type="Sprite2D" parent="."]
+texture = ExtResource("3_38xy6")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_kwso7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_y7bmc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_yuwlo")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_05f3t")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls"]
+position = Vector2(20.5, -78.5)
+shape = SubResource("RectangleShape2D_fdlp0")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-274, -40.5)
+shape = SubResource("RectangleShape2D_lqagn")
+
+[node name="silverkey" parent="." instance=ExtResource("5_2nkgk")]
+position = Vector2(306, 64)
+texture = ExtResource("6_0evp8")
+hframes = 2
+vframes = 2
+frame = 2
+pickuptext = "You got a silver key!"
+
+[node name="HitboxShape" parent="silverkey/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_wfpkm")
+
+[node name="InteractionRangeShape" parent="silverkey/InteractionRange" index="0"]
+shape = SubResource("CircleShape2D_17lod")
+
+[node name="goldkey" parent="." instance=ExtResource("5_2nkgk")]
+position = Vector2(306, -11)
+texture = ExtResource("6_0evp8")
+hframes = 2
+vframes = 2
+frame = 1
+pickuptext = "You got a gold key!"
+
+[node name="HitboxShape" parent="goldkey/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_wfpkm")
+
+[node name="InteractionRangeShape" parent="goldkey/InteractionRange" index="0"]
+shape = SubResource("CircleShape2D_17lod")
+
+[editable path="stairkey"]
+[editable path="stairkey/bronzekey"]
+[editable path="silverkey"]
+[editable path="goldkey"]

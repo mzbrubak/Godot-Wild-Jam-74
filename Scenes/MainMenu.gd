@@ -5,11 +5,8 @@ func _ready():
 	$"Credits Screen".visible=false;
 
 func _on_new_game_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/testmap.tscn");
-
-func _on_continue_button_pressed():
-	#Load scene based on save data
-	pass # Replace with function body.
+	#get_tree().change_scene_to_file("res://Scenes/testmap.tscn");
+	get_tree().change_scene_to_file("res://Scenes/testmap.tscn")
 
 func _on_options_button_pressed():
 	$MainMenuUI.hide();
@@ -26,7 +23,6 @@ func _on_exit_button_pressed():
 func _on_credits_screen__back_button_pressed():
 	$"Credits Screen".hide();
 	$MainMenuUI.show();
-
 
 func _on_title_options_layer__back_button_pressed():
 	$TitleOptionsLayer.hide();

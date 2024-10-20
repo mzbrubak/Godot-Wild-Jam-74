@@ -1,0 +1,153 @@
+[gd_scene load_steps=19 format=3 uid="uid://3mllxmfk5t88"]
+
+[ext_resource type="Texture2D" uid="uid://c15myl8aomuvy" path="res://ArtAssets/Layer 2.png" id="1_nfly6"]
+[ext_resource type="Script" path="res://Scenes/stairs.gd" id="1_xml4r"]
+[ext_resource type="PackedScene" uid="uid://rsuxbe2c44kc" path="res://Scenes/door.tscn" id="2_idpg4"]
+[ext_resource type="PackedScene" uid="uid://1rs7ilg6rm" path="res://Scenes/PauseMenu.tscn" id="2_puovv"]
+[ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="3_opiiy"]
+[ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="3_ovhya"]
+[ext_resource type="PackedScene" uid="uid://p86qynwcwqa0" path="res://Scenes/gettable_object.tscn" id="6_7477n"]
+[ext_resource type="Texture2D" uid="uid://cu8x6wvydxwnd" path="res://ArtAssets/crowbar.png" id="8_w26d3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v7hps"]
+normal = Vector2(1, 0)
+distance = -64.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h72e7"]
+distance = -128.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iyvww"]
+normal = Vector2(-1, 0)
+distance = -64.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4fw4l"]
+normal = Vector2(0, 1)
+distance = -66.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbucm"]
+size = Vector2(42, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_se2db"]
+size = Vector2(66, 55)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hasq4"]
+polygon = PackedVector2Array(-21, -18, 21, -18, 21, 78, -21, 78, -21, -18)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qpnk0"]
+polygon = PackedVector2Array(-2, -18, -2, -128, 21, -128, 21, -18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_omg1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y00ir"]
+size = Vector2(43, 19)
+
+[node name="Stairs" type="Node"]
+script = ExtResource("1_xml4r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Map" type="Sprite2D" parent="."]
+texture = ExtResource("1_nfly6")
+hframes = 2
+frame = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_puovv")]
+script = ExtResource("3_ovhya")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Door" parent="." instance=ExtResource("2_idpg4")]
+position = Vector2(-40, -96)
+keyid = "Nonexistent Key"
+lockedtext = "The sign by the door reads B666. The door is just painted on the wall."
+destination = "res://Scenes/testmap.tscn"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"pending_changes": {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": ""
+}
+}
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_v7hps")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_h72e7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_iyvww")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_4fw4l")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_tbucm")
+
+[node name="THESTAIRSLIEcollision" type="CollisionShape2D" parent="Walls"]
+position = Vector2(31, -38.5)
+shape = SubResource("RectangleShape2D_se2db")
+
+[node name="Down" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="down" type="CollisionPolygon2D" parent="Down"]
+position = Vector2(1, 17)
+polygon = PackedVector2Array(-20, 40, -65, 40, -65, 60, -20, 60)
+
+[node name="Player" parent="." instance=ExtResource("3_opiiy")]
+position = Vector2(-41, -79)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_hasq4")
+
+[node name="THESTAIRSLIEoccluder" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_qpnk0")
+
+[node name="Mid" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="mid" type="CollisionPolygon2D" parent="Mid"]
+polygon = PackedVector2Array(-9, 77, -9, 129, 12, 129, 11, 77)
+
+[node name="Up" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="up" type="CollisionPolygon2D" parent="Up"]
+position = Vector2(0, 20)
+polygon = PackedVector2Array(20, 40, 65, 40, 65, 58, 20, 58)
+
+[node name="gettable_object" parent="." instance=ExtResource("6_7477n")]
+position = Vector2(42, -29)
+texture = ExtResource("8_w26d3")
+contents = {
+"crowbar": 1
+}
+pickuptext = "You got a crowbar!"
+
+[node name="HitboxShape" parent="gettable_object/Hitbox" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("CircleShape2D_omg1y")
+
+[node name="InteractionRangeShape" parent="gettable_object/InteractionRange" index="0"]
+position = Vector2(0.5, 17.5)
+shape = SubResource("RectangleShape2D_y00ir")
+
+[connection signal="body_entered" from="Down" to="." method="_on_down_entered"]
+[connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]
+[connection signal="body_entered" from="Mid" to="." method="_on_mid_entered"]
+[connection signal="body_entered" from="Up" to="." method="_on_up_entered"]
+
+[editable path="gettable_object"]

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://brkta03x3wo8p"
+path="res://.godot/imported/stairs.aseprite-fe8fbaba4bde3208ce866cc64a3a98e0.res"
+
+[deps]
+
+source_file="res://ArtAssets/stairs.aseprite"
+dest_files=["res://.godot/imported/stairs.aseprite-fe8fbaba4bde3208ce866cc64a3a98e0.res"]
+
+[params]
+

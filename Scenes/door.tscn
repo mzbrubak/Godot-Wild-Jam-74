@@ -1,16 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://rsuxbe2c44kc"]
 
-[ext_resource type="Texture2D" uid="uid://6unqhopghkja" path="res://icon.svg" id="1_lpum0"]
+[ext_resource type="Texture2D" uid="uid://bhhr6l0ms2yv1" path="res://ArtAssets/Door.png" id="1_2rokp"]
 [ext_resource type="Script" path="res://Scenes/door.gd" id="2_3swug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug43"]
-size = Vector2(128, 128)
+size = Vector2(33, 54)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hbnsk"]
-radius = 126.063
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ww0bp"]
+size = Vector2(33, 20)
 
-[node name="gettable_object" type="Sprite2D"]
-texture = ExtResource("1_lpum0")
+[node name="Door" type="Sprite2D"]
+texture = ExtResource("1_2rokp")
+hframes = 2
+vframes = 2
 script = ExtResource("2_3swug")
 
 [node name="Hitbox" type="StaticBody2D" parent="."]
@@ -18,6 +20,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_oug43")
 
 [node name="InteractionRange" type="Area2D" parent="."]
@@ -25,7 +28,8 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="InteractionRangeShape" type="CollisionShape2D" parent="InteractionRange"]
-shape = SubResource("CircleShape2D_hbnsk")
+position = Vector2(-0.5, 40)
+shape = SubResource("RectangleShape2D_ww0bp")
 
 [connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]

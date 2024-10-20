@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bwt7fqy5bf2au"
+path="res://.godot/imported/Ghost.aseprite-32015a71fa14e0f940e9bba03c1a40da.res"
+
+[deps]
+
+source_file="res://ArtAssets/Ghost.aseprite"
+dest_files=["res://.godot/imported/Ghost.aseprite-32015a71fa14e0f940e9bba03c1a40da.res"]
+
+[params]
+
