@@ -21,4 +21,3 @@ func _ready():
 	inventory["key2"]=0;
 	inventory["key3"]=0;
 	inventory["Nonexistent Key"]=0;
-

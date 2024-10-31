@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/ghost.gd" id="1_3hhar"]
 [ext_resource type="SpriteFrames" uid="uid://ct85xwuj5olfv" path="res://ArtAssets/Ghost.res" id="2_elnyj"]
-[ext_resource type="AudioStream" uid="uid://dd7xxqw30yw0t" path="res://AudioSamples/WTFwave.wav" id="3_m43sa"]
+[ext_resource type="AudioStream" uid="uid://cg78xgdoasarw" path="res://AudioSamples/THESHADOWAPPROACHES.wav" id="3_4n3pj"]
 [ext_resource type="AudioStream" uid="uid://da7v2ld678xiu" path="res://AudioSamples/WoodFootstep3.wav" id="4_a6u7j"]
 [ext_resource type="AudioStream" uid="uid://exki1b4yqe32" path="res://AudioSamples/WoodFootstep6.wav" id="4_lhq8f"]
 [ext_resource type="AudioStream" uid="uid://dm6opbrhpje6r" path="res://AudioSamples/WoodFootstep5.wav" id="5_cwudr"]
@@ -514,7 +514,7 @@ sprite_frames = ExtResource("2_elnyj")
 frame = 8
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_m43sa")
+stream = ExtResource("3_4n3pj")
 autoplay = true
 bus = &"SFX"
 
