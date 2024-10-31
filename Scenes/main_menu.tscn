@@ -80,6 +80,7 @@ texture = ExtResource("3_3hyep")
 [node name="Credits Screen" parent="." instance=ExtResource("3_0c3v7")]
 
 [node name="TitleOptionsLayer" parent="." instance=ExtResource("4_4fxmr")]
+visible = false
 
 [connection signal="pressed" from="MainMenuUI/MenuButtonContainer/New Game Button" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MenuButtonContainer/Options Button" to="." method="_on_options_button_pressed"]

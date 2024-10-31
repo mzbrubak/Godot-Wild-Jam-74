@@ -3,5 +3,5 @@ signal IMHERE
 func _ready():
 	self.monitoring=false
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	IMHERE.emit(self.global_position)

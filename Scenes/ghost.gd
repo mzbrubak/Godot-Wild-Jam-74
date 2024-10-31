@@ -17,7 +17,7 @@ func IHEARYOU(pos):
 	print("I HEAR YOU AT "+str(pos.x),","+str(pos.y))
 	set_movement_target(pos)
 
-func physics_process(delta):
+func physics_process(_delta):
 	next_path_position=$NavigationAgent2D.get_next_path_position()
 	velocity = global_position.direction_to(next_path_position)*SPEED
 	move_and_slide()

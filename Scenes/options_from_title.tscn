@@ -31,7 +31,6 @@ text = "Resolution"
 layout_mode = 2
 item_count = 6
 popup/item_0/text = "640x360"
-popup/item_0/id = 0
 popup/item_1/text = "1280x720"
 popup/item_1/id = 1
 popup/item_2/text = "1920x1080"
@@ -74,6 +73,14 @@ text = "Tutorial Dialogues"
 [node name="Back Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_houn3")
+
+[node name="Label" type="Label" parent="VBoxContainer/Back Button"]
+layout_mode = 0
+offset_left = 13.5
+offset_top = 1.5
+offset_right = 53.5
+offset_bottom = 24.5
+text = "Back"
 
 [connection signal="item_selected" from="VBoxContainer/ResolutionOption/ResolutionDropdown" to="." method="_on_resolution_dropdown_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/Master Volume" to="." method="_on_master_volume_value_changed"]

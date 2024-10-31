@@ -33,7 +33,6 @@ text = "Resolution"
 layout_mode = 2
 item_count = 6
 popup/item_0/text = "640x360"
-popup/item_0/id = 0
 popup/item_1/text = "1280x720"
 popup/item_1/id = 1
 popup/item_2/text = "1920x1080"
@@ -77,9 +76,25 @@ text = "Tutorial Dialogues"
 layout_mode = 2
 texture_normal = ExtResource("2_l1tuj")
 
+[node name="Resume" type="Label" parent="VBoxContainer/Back Button"]
+layout_mode = 0
+offset_left = 14.5
+offset_top = 2.5
+offset_right = 76.5
+offset_bottom = 25.5
+text = "Resume"
+
 [node name="Main Menu Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_l1tuj")
+
+[node name="Label" type="Label" parent="VBoxContainer/Main Menu Button"]
+layout_mode = 0
+offset_left = 14.5
+offset_top = 0.5
+offset_right = 160.5
+offset_bottom = 23.5
+text = "Quit to Main Menu"
 
 [connection signal="item_selected" from="VBoxContainer/ResolutionOption/ResolutionDropdown" to="." method="_on_resolution_dropdown_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/Master Volume" to="." method="_on_master_volume_value_changed"]
