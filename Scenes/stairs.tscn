@@ -59,7 +59,7 @@ color = Color(0, 0, 0, 1)
 position = Vector2(-40, -96)
 keyid = "Nonexistent Key"
 lockedtext = "The sign by the door reads B666. The door is just painted on the wall."
-destination = "res://Scenes/testmap.tscn"
+destination = "res://scenes/hallway.tscn"
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": false,
 "pending_changes": {
