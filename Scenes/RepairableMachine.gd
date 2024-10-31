@@ -1,20 +1,21 @@
 extends "InteractableObject.gd"
 @export var needs_catalyst:Dictionary = {"large_screwdriver":1}
 @export var needs_component:Dictionary = {"wire":7,"large_capacitor":3,"switch":1}
-@export var floor:int
+@export var currentfloor:int
 var fixed=false
 var player_ref
 var destination
 
+#note: need to revert this to a version that makes sense for non-elevator objects
 func on_interact(player):
 	var textout
-	if floor==1 and SaveData.lightsout==false:
+	if currentfloor==1 and SaveData.lightsout==false:
 		textout="You take the elevator down to the basement."
 		player.show_text(textout)
 		player.dialoguepause_requested.connect(on_interact_end)
 		player_ref=player
 		destination="res://Scenes/hallway.tscn"
-	elif floor==1:
+	elif currentfloor==1:
 		textout="You have no particular desire to go back down the elevator."
 		player.show_text(textout)
 	elif SaveData.lightsout==false:
