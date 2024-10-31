@@ -28,7 +28,7 @@ func _input(event):
 	if event.is_action_released("AltSpeed"):
 		movespeed=WALKSPEED;
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Input.get_vector("Left","Right","Up","Down");
 	if direction:
 		facing=direction;#fallback for interaction clashing
@@ -60,9 +60,6 @@ func set_animation(direction):
 			$AnimationPlayer.current_animation="Up"
 		elif y>0:
 			$AnimationPlayer.current_animation="Down"
-
-func _process(delta):
-	pass
 
 func register(object):
 	interactioncandidates.append(object);

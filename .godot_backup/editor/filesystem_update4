@@ -1,0 +1,16 @@
+res://Scenes/main_menu.tscn
+res://Scenes/player.gd
+res://Scenes/RepairableMachine.gd
+res://Scenes/options_from_title.tscn
+res://Scenes/testmap.tscn
+res://Scenes/TitleOptions.tscn
+res://Scenes/credits_screen.tscn
+res://Scenes/PauseMenu.tscn
+res://Scenes/ghost.tscn
+res://Scenes/stairs.tscn
+res://Scenes/door.tscn
+res://Scenes/hallway.tscn
+res://Scenes/elevator.tscn
+res://Scenes/lab.tscn
+res://Scenes/player.tscn
+res://Scenes/searchable_object.tscn

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0idxa3bkk85o"]
 
 [ext_resource type="Texture2D" uid="uid://cp0743svldw57" path="res://ArtAssets/Elevator.png" id="1_6nqk4"]
-[ext_resource type="Script" path="res://Scenes/RepairableMachine.gd" id="2_nm2hk"]
+[ext_resource type="Script" path="res://Scenes/elevator.gd" id="2_8nk0o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug43"]
 size = Vector2(107, 87)
@@ -13,7 +13,7 @@ size = Vector2(123, 22)
 texture = ExtResource("1_6nqk4")
 hframes = 3
 vframes = 3
-script = ExtResource("2_nm2hk")
+script = ExtResource("2_8nk0o")
 
 [node name="Hitbox" type="StaticBody2D" parent="."]
 collision_layer = 4

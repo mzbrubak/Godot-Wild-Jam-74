@@ -1,0 +1,15 @@
+AudioStreamPlayer
+NavigationAgent2D
+NavigationRegion2D
+Sprite2D
+CollisionShape2D
+Area2D
+AnimationPlayer
+StaticBody2D
+CanvasModulate
+Camera2D
+Node
+AnimatedSprite2D
+LightOccluder2D
+CollisionPolygon2D
+PointLight2D
