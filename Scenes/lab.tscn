@@ -1,17 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4fvqw5fkcies"]
+[gd_scene load_steps=19 format=3 uid="uid://b4fvqw5fkcies"]
 
 [ext_resource type="Script" path="res://Scenes/lab.gd" id="1_1arhn"]
 [ext_resource type="Texture2D" uid="uid://b24g67ktrwffl" path="res://ArtAssets/Lab_GroundFloor.png" id="1_61pid"]
 [ext_resource type="Texture2D" uid="uid://dtp4k7k8x71rh" path="res://ArtAssets/Lab_Mezzanine.png" id="2_iw1m8"]
 [ext_resource type="Texture2D" uid="uid://bfpqioedooiyr" path="res://ArtAssets/Lab_Ceiling Chains.png" id="3_38xy6"]
 [ext_resource type="PackedScene" uid="uid://rsuxbe2c44kc" path="res://Scenes/door.tscn" id="4_c2783"]
-[ext_resource type="PackedScene" uid="uid://p86qynwcwqa0" path="res://Scenes/gettable_object.tscn" id="5_2nkgk"]
 [ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="5_u7uxv"]
-[ext_resource type="Texture2D" uid="uid://cxe0fu78dwhlo" path="res://ArtAssets/keys.png" id="6_0evp8"]
 [ext_resource type="PackedScene" uid="uid://4udjmo7bjf8j" path="res://Scenes/ghost.tscn" id="9_nle2v"]
 [ext_resource type="PackedScene" uid="uid://dcsakag2v1xox" path="res://Scenes/searchable_object.tscn" id="10_6ijth"]
 [ext_resource type="PackedScene" uid="uid://1rs7ilg6rm" path="res://Scenes/PauseMenu.tscn" id="10_p7m80"]
 [ext_resource type="Texture2D" uid="uid://bxu17gu3sthse" path="res://ArtAssets/Cabinets.png" id="11_2t5mk"]
+[ext_resource type="PackedScene" uid="uid://0xybnneums2j" path="res://Scenes/key.tscn" id="12_xpse0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8k3t5"]
 vertices = PackedVector2Array(306, 81, 306, 80, 307, 167, -262, -47, 272, -47, 269, -44, 297, -44, 294, -47, 306, -47, 266, -36, -262, -14, 289, -113, 290, -110, -286, -110, -307, -113, 306, -28, 300, -36, 297, -28, 298, -25, 291, -22, 292, -19, -307, 167, -286, -14, 298, 78, 292, 72, 289, 64, 283, -19, 289, -11, 269, -28, 275, -22, 292, 56, 292, -3, 298, 3, 298, 50, 306, 6, 306, 47)
@@ -41,12 +40,6 @@ size = Vector2(593, 43)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqagn"]
 size = Vector2(4, 33)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wfpkm"]
-radius = 6.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_17lod"]
-radius = 11.0
-
 [node name="Lab" type="Node"]
 script = ExtResource("1_1arhn")
 
@@ -69,6 +62,7 @@ texture = ExtResource("2_iw1m8")
 texture = ExtResource("3_38xy6")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Ghost" parent="." instance=ExtResource("9_nle2v")]
@@ -100,73 +94,6 @@ shape = SubResource("RectangleShape2D_fdlp0")
 position = Vector2(-274, -40.5)
 shape = SubResource("RectangleShape2D_lqagn")
 
-[node name="bronzekey" parent="NavigationRegion2D" instance=ExtResource("5_2nkgk")]
-position = Vector2(283, -36)
-texture = ExtResource("6_0evp8")
-hframes = 2
-vframes = 2
-frame = 3
-contents = {
-"key1": 1
-}
-pickuptext = "You got a bronze key!"
-
-[node name="HitboxShape" parent="NavigationRegion2D/bronzekey/Hitbox" index="0"]
-shape = SubResource("CircleShape2D_wfpkm")
-
-[node name="InteractionRangeShape" parent="NavigationRegion2D/bronzekey/InteractionRange" index="0"]
-shape = SubResource("CircleShape2D_17lod")
-
-[node name="goldkey" parent="NavigationRegion2D" instance=ExtResource("5_2nkgk")]
-position = Vector2(306, -11)
-texture = ExtResource("6_0evp8")
-hframes = 2
-vframes = 2
-frame = 1
-contents = {
-"key3": 1
-}
-pickuptext = "You got a gold key!"
-
-[node name="HitboxShape" parent="NavigationRegion2D/goldkey/Hitbox" index="0"]
-shape = SubResource("CircleShape2D_wfpkm")
-
-[node name="InteractionRangeShape" parent="NavigationRegion2D/goldkey/InteractionRange" index="0"]
-shape = SubResource("CircleShape2D_17lod")
-
-[node name="silverkey" parent="NavigationRegion2D" instance=ExtResource("5_2nkgk")]
-position = Vector2(306, 64)
-texture = ExtResource("6_0evp8")
-hframes = 2
-vframes = 2
-frame = 2
-contents = {
-"key2": 1
-}
-pickuptext = "You got a silver key!"
-
-[node name="HitboxShape" parent="NavigationRegion2D/silverkey/Hitbox" index="0"]
-shape = SubResource("CircleShape2D_wfpkm")
-
-[node name="InteractionRangeShape" parent="NavigationRegion2D/silverkey/InteractionRange" index="0"]
-shape = SubResource("CircleShape2D_17lod")
-
-[node name="stairkey" parent="NavigationRegion2D" instance=ExtResource("5_2nkgk")]
-position = Vector2(306, -114)
-texture = ExtResource("6_0evp8")
-hframes = 2
-vframes = 2
-contents = {
-"stairkey": 1
-}
-pickuptext = "You got the stair key!"
-
-[node name="HitboxShape" parent="NavigationRegion2D/stairkey/Hitbox" index="0"]
-shape = SubResource("CircleShape2D_wfpkm")
-
-[node name="InteractionRangeShape" parent="NavigationRegion2D/stairkey/InteractionRange" index="0"]
-shape = SubResource("CircleShape2D_17lod")
-
 [node name="Cabinet0" parent="NavigationRegion2D" instance=ExtResource("10_6ijth")]
 position = Vector2(-214, -23)
 texture = ExtResource("11_2t5mk")
@@ -174,7 +101,7 @@ hframes = 3
 vframes = 3
 frame = 3
 contents = {
-"Wire": 1
+"wire": 1
 }
 search_text = "You found 1 part!"
 empty_text = "You've already searched this cabinet"
@@ -239,14 +166,44 @@ empty_text = "You've already searched this cabinet"
 empty_sprite = 4
 locked_text = "This cabinet is locked, and you don't have the right key."
 
+[node name="stairkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+position = Vector2(306, -112)
+frame = 0
+contents = {
+"stairkey": 1
+}
+pickuptext = "You found the stair key!"
+
+[node name="goldkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+position = Vector2(-41, -47)
+frame = 1
+spriteindex = 1
+contents = {
+"key3": 1
+}
+pickuptext = "You got a gold key!"
+
+[node name="silverkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+position = Vector2(75, -48)
+frame = 2
+spriteindex = 2
+contents = {
+"key2": 1
+}
+pickuptext = "You got a silver key!"
+
+[node name="bronzekey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+position = Vector2(288, -33)
+spriteindex = 3
+contents = {
+"key1": 1
+}
+pickuptext = "You got a bronze key!"
+
 [node name="PauseMenu" parent="." instance=ExtResource("10_p7m80")]
 
 [connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]
 
-[editable path="NavigationRegion2D/bronzekey"]
-[editable path="NavigationRegion2D/goldkey"]
-[editable path="NavigationRegion2D/silverkey"]
-[editable path="NavigationRegion2D/stairkey"]
 [editable path="NavigationRegion2D/Cabinet0"]
 [editable path="NavigationRegion2D/Cabinet1"]
 [editable path="NavigationRegion2D/Cabinet2"]

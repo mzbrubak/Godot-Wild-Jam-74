@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://p86qynwcwqa0"]
+[gd_scene load_steps=5 format=3 uid="uid://0xybnneums2j"]
 
-[ext_resource type="Texture2D" uid="uid://6unqhopghkja" path="res://icon.svg" id="1_ss4oh"]
-[ext_resource type="Script" path="res://Scenes/key.gd" id="2_nadj7"]
+[ext_resource type="Texture2D" uid="uid://cxe0fu78dwhlo" path="res://ArtAssets/keys.png" id="1_tpq56"]
+[ext_resource type="Script" path="res://Scenes/key.gd" id="2_jd73t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug43"]
 size = Vector2(10, 6)
@@ -9,9 +9,12 @@ size = Vector2(10, 6)
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbnsk"]
 radius = 7.0
 
-[node name="gettable_object" type="Sprite2D"]
-texture = ExtResource("1_ss4oh")
-script = ExtResource("2_nadj7")
+[node name="key" type="Sprite2D"]
+texture = ExtResource("1_tpq56")
+hframes = 2
+vframes = 2
+frame = 3
+script = ExtResource("2_jd73t")
 
 [node name="Hitbox" type="StaticBody2D" parent="."]
 collision_layer = 4

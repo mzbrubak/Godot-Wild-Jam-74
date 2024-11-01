@@ -1,17 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://p86qynwcwqa0"]
+[gd_scene load_steps=5 format=3 uid="uid://cm7sbd4nd3nbe"]
 
-[ext_resource type="Texture2D" uid="uid://6unqhopghkja" path="res://icon.svg" id="1_ss4oh"]
-[ext_resource type="Script" path="res://Scenes/key.gd" id="2_nadj7"]
+[ext_resource type="Texture2D" uid="uid://bxu17gu3sthse" path="res://ArtAssets/Cabinets.png" id="1_sfnhn"]
+[ext_resource type="Script" path="res://Scenes/SearchableObject.gd" id="2_yka7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug43"]
-size = Vector2(10, 6)
+size = Vector2(24, 41)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbnsk"]
-radius = 7.0
+radius = 34.6699
 
-[node name="gettable_object" type="Sprite2D"]
-texture = ExtResource("1_ss4oh")
-script = ExtResource("2_nadj7")
+[node name="Cabinet1" type="Sprite2D"]
+texture = ExtResource("1_sfnhn")
+hframes = 3
+vframes = 3
+frame = 2
+script = ExtResource("2_yka7q")
+locked = true
+keyid = "key1"
+index = 1
+contents = {
+"small_screwdriver": 1,
+"wire": 2
+}
+search_text = "You found a screwdriver and 2 parts"
+empty_text = "You've already searched this cabinet"
+empty_sprite = 6
+locked_text = "This cabinet is locked, and you don't have the right key"
 
 [node name="Hitbox" type="StaticBody2D" parent="."]
 collision_layer = 4

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl7768u6x3alm"]
+
+[ext_resource type="AudioStream" uid="uid://b20feosotrdp7" path="res://AudioSamples/Scream.wav" id="1_0d1ik"]
+[ext_resource type="Texture2D" uid="uid://03ysd3oaolou" path="res://ArtAssets/MainMenuButtonUnfocused.png" id="1_c6igx"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+visible = false
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0d1ik")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_c6igx")
+
+[node name="Retry" type="Label" parent="VBoxContainer/TextureButton"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 1.5
+offset_right = 191.0
+offset_bottom = 24.5
+text = "Retry from Room Entry"

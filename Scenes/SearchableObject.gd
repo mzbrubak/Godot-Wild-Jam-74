@@ -22,10 +22,15 @@ func on_interact(player):
 		return
 	if locked:
 		if player.check_inventory({keyid: 1}):
-			player.show_text(search_text)
-			player.add_to_inventory(contents)
-			self.frame=empty_sprite
-			searched=true
-			SaveData.searchable_flag_list[index]=true
+			on_successful_search(player)
 		else:
 			player.show_text(locked_text)
+	else:
+		on_successful_search(player)
+		
+func on_successful_search(player):
+	player.show_text(search_text)
+	player.add_to_inventory(contents)
+	self.frame=empty_sprite
+	searched=true
+	SaveData.searchable_flag_list[index]=true
