@@ -1,9 +1,11 @@
 extends Node
 var last_entered="down"
+var pickup_flag_list
 var rng=RandomNumberGenerator.new()
 
 func _ready():
 	SaveData.from="Stairs"
+	pickup_flag_list=SaveData.pickup_flag_list
 
 func _on_down_entered(_player):
 	if last_entered=="mid":
@@ -28,3 +30,9 @@ func _on_up_entered(_player):
 
 func changecollision(state):
 	$Walls/THESTAIRSLIEcollision.disabled=state
+
+func parse_flags():
+	pass
+
+func on_pickup_pickedup(pickupindex):
+	pickup_flag_list[pickupindex]=true

@@ -1,27 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://cm7sbd4nd3nbe"]
 
-[ext_resource type="Texture2D" uid="uid://bxu17gu3sthse" path="res://ArtAssets/Cabinets.png" id="1_sfnhn"]
+[ext_resource type="Texture2D" uid="uid://ovhbcknxn1xe" path="res://ArtAssets/Cabinets.png" id="1_sfnhn"]
 [ext_resource type="Script" path="res://Scenes/SearchableObject.gd" id="2_yka7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug43"]
-size = Vector2(24, 41)
+size = Vector2(24, 38.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hbnsk"]
-radius = 34.6699
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7vbc"]
+radius = 12.0
+height = 50.0
 
 [node name="Cabinet1" type="Sprite2D"]
 texture = ExtResource("1_sfnhn")
 hframes = 3
 vframes = 3
-frame = 2
 script = ExtResource("2_yka7q")
 locked = true
 keyid = "key1"
-index = 1
-contents = {
-"small_screwdriver": 1,
-"wire": 2
-}
 search_text = "You found a screwdriver and 2 parts"
 empty_text = "You've already searched this cabinet"
 empty_sprite = 6
@@ -32,6 +27,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -1.25)
 shape = SubResource("RectangleShape2D_oug43")
 
 [node name="InteractionRange" type="Area2D" parent="."]
@@ -39,7 +35,8 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="InteractionRangeShape" type="CollisionShape2D" parent="InteractionRange"]
-shape = SubResource("CircleShape2D_hbnsk")
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_e7vbc")
 
 [connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]

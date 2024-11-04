@@ -13,7 +13,7 @@ config_version=5
 config/name="HauntedLab"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://staringatchains.png"
 
 [autoload]
 
@@ -134,4 +134,4 @@ ShowInventory={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.128344, 0.128344, 0.128344, 1)

@@ -1,9 +1,10 @@
 extends Node
 var machines_repaired=[false,false,false,false,false]
 var lightsout:bool=false
-var pickup_flag_list=[false,false,false,false,false,false,false]
-var searchable_flag_list=[false,false,false,false,false,false,false]
+var pickup_flag_list=[false,false,false,false,false]
+var searchable_flag_list=[false,false,false,false]
 var inventory:Dictionary
+var currentlocation="lobby"
 var from="lobby"
 func _ready():
 	inventory["small_screwdriver"]=0;

@@ -8,9 +8,10 @@ var interactioncandidates=[];
 var inventory:Dictionary
 var movespeed=WALKSPEED
 var not_busy=1
+var deadge=false
 
 func _ready():
-	inventory=SaveData.inventory
+	inventory=SaveData.inventory.duplicate(true)
 	set_inventory_text()
 	$PointLight2D.enabled=SaveData.lightsout
 
@@ -73,7 +74,7 @@ func interact():
 			interactioncandidates[0].on_interact(self)
 		elif interactioncandidates.size()>1:
 			interact_conflict_resolve()
-	else:
+	elif deadge==false:
 		hide_text();
 		dialogueunpause();
 		
@@ -135,9 +136,14 @@ func hide_text():
 func dialoguepause():
 	dialoguepause_requested.emit(true)
 	not_busy=0
-	pass
+	$AnimationPlayer.active=false
 	
 func dialogueunpause():
 	dialoguepause_requested.emit(false)
 	not_busy=1
-	pass
+	$AnimationPlayer.active=true
+
+func oncaught():
+	not_busy=0;
+	deadge=true
+	$AnimationPlayer.active=false

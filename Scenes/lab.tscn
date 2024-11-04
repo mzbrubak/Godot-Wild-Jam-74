@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bfpqioedooiyr" path="res://ArtAssets/Lab_Ceiling Chains.png" id="3_38xy6"]
 [ext_resource type="PackedScene" uid="uid://rsuxbe2c44kc" path="res://Scenes/door.tscn" id="4_c2783"]
 [ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="5_u7uxv"]
+[ext_resource type="PackedScene" uid="uid://cm7sbd4nd3nbe" path="res://Scenes/cabinet.tscn" id="9_ji3dj"]
 [ext_resource type="PackedScene" uid="uid://4udjmo7bjf8j" path="res://Scenes/ghost.tscn" id="9_nle2v"]
-[ext_resource type="PackedScene" uid="uid://dcsakag2v1xox" path="res://Scenes/searchable_object.tscn" id="10_6ijth"]
 [ext_resource type="PackedScene" uid="uid://1rs7ilg6rm" path="res://Scenes/PauseMenu.tscn" id="10_p7m80"]
-[ext_resource type="Texture2D" uid="uid://bxu17gu3sthse" path="res://ArtAssets/Cabinets.png" id="11_2t5mk"]
+[ext_resource type="PackedScene" uid="uid://dl7768u6x3alm" path="res://Scenes/game_over_screen.tscn" id="11_j0o72"]
 [ext_resource type="PackedScene" uid="uid://0xybnneums2j" path="res://Scenes/key.tscn" id="12_xpse0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8k3t5"]
@@ -52,22 +52,6 @@ texture = ExtResource("1_61pid")
 position = Vector2(-296, -153)
 destination = "res://Scenes/hallway.tscn"
 
-[node name="Player" parent="." instance=ExtResource("5_u7uxv")]
-position = Vector2(-296, -135)
-
-[node name="Mezzanine" type="Sprite2D" parent="."]
-texture = ExtResource("2_iw1m8")
-
-[node name="Chains" type="Sprite2D" parent="."]
-texture = ExtResource("3_38xy6")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0, 0, 0, 1)
-
-[node name="Ghost" parent="." instance=ExtResource("9_nle2v")]
-position = Vector2(-138, 128)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(4, -1)
 navigation_polygon = SubResource("NavigationPolygon_8k3t5")
@@ -94,78 +78,6 @@ shape = SubResource("RectangleShape2D_fdlp0")
 position = Vector2(-274, -40.5)
 shape = SubResource("RectangleShape2D_lqagn")
 
-[node name="Cabinet0" parent="NavigationRegion2D" instance=ExtResource("10_6ijth")]
-position = Vector2(-214, -23)
-texture = ExtResource("11_2t5mk")
-hframes = 3
-vframes = 3
-frame = 3
-contents = {
-"wire": 1
-}
-search_text = "You found 1 part!"
-empty_text = "You've already searched this cabinet"
-empty_sprite = 6
-
-[node name="HitboxShape" parent="NavigationRegion2D/Cabinet0/Hitbox" index="0"]
-position = Vector2(0, -5.5)
-
-[node name="Cabinet1" parent="NavigationRegion2D" instance=ExtResource("10_6ijth")]
-texture = ExtResource("11_2t5mk")
-hframes = 3
-vframes = 3
-frame = 2
-locked = true
-keyid = "key1"
-index = 1
-contents = {
-"small_screwdriver": 1,
-"wire": 2
-}
-search_text = "You found a screwdriver and 2 parts"
-empty_text = "You've already searched this cabinet"
-empty_sprite = 6
-locked_text = "This cabinet is locked, and you don't have the right key"
-
-[node name="Cabinet2" parent="NavigationRegion2D" instance=ExtResource("10_6ijth")]
-position = Vector2(-22, 151)
-texture = ExtResource("11_2t5mk")
-hframes = 3
-vframes = 3
-frame = 1
-locked = true
-keyid = "key2"
-index = 2
-contents = {
-"medium_screwdriver": 1,
-"switch": 1,
-"wire": 3
-}
-search_text = "You found a screwdriver and 4 parts!"
-empty_text = "You've already searched this cabinet."
-empty_sprite = 5
-locked_text = "This cabinet is locked, and you don't have the right key."
-
-[node name="Cabinet3" parent="NavigationRegion2D" instance=ExtResource("10_6ijth")]
-position = Vector2(192, 109)
-texture = ExtResource("11_2t5mk")
-hframes = 3
-vframes = 3
-locked = true
-keyid = "key3"
-index = 3
-contents = {
-"large_capacitor": 7,
-"large_screwdriver": 1,
-"logic_chip_a": 3,
-"logic_chip_b": 2,
-"wire": 20
-}
-search_text = "You find a screwdriver and 32 parts!"
-empty_text = "You've already searched this cabinet"
-empty_sprite = 4
-locked_text = "This cabinet is locked, and you don't have the right key."
-
 [node name="stairkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
 position = Vector2(306, -112)
 frame = 0
@@ -173,15 +85,16 @@ contents = {
 "stairkey": 1
 }
 pickuptext = "You found the stair key!"
+pickupindex = 1
 
-[node name="goldkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
-position = Vector2(-41, -47)
-frame = 1
-spriteindex = 1
+[node name="bronzekey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+position = Vector2(288, -33)
+spriteindex = 3
 contents = {
-"key3": 1
+"key1": 1
 }
-pickuptext = "You got a gold key!"
+pickuptext = "You got a bronze key!"
+pickupindex = 2
 
 [node name="silverkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
 position = Vector2(75, -48)
@@ -191,20 +104,76 @@ contents = {
 "key2": 1
 }
 pickuptext = "You got a silver key!"
+pickupindex = 3
 
-[node name="bronzekey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
-position = Vector2(288, -33)
-spriteindex = 3
+[node name="goldkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+position = Vector2(-41, -47)
+frame = 1
+spriteindex = 1
 contents = {
-"key1": 1
+"key3": 1
 }
-pickuptext = "You got a bronze key!"
+pickuptext = "You got a gold key!"
+pickupindex = 4
+
+[node name="Cabinet0" parent="NavigationRegion2D" instance=ExtResource("9_ji3dj")]
+position = Vector2(48, 12)
+locked = false
+keyid = ""
+contents = {
+"wire": 1
+}
+search_text = "You found a part!"
+full_sprite = 3
+empty_sprite = 7
+
+[node name="Cabinet1" parent="NavigationRegion2D" instance=ExtResource("9_ji3dj")]
+position = Vector2(-64, 83)
+contents = {
+"medium_screwdriver": 1
+}
+search_text = "You found a screwdriver"
+full_sprite = 2
+
+[node name="Cabinet2" parent="NavigationRegion2D" instance=ExtResource("9_ji3dj")]
+position = Vector2(86, 83)
+keyid = "key2"
+contents = {
+"small_screwdriver": 1
+}
+search_text = "You found a screwdriver"
+empty_sprite = 4
+
+[node name="Cabinet3" parent="NavigationRegion2D" instance=ExtResource("9_ji3dj")]
+position = Vector2(-131, 50)
+keyid = "key3"
+contents = {
+"large_screwdriver": 1
+}
+search_text = "You found a screwdriver"
+full_sprite = 1
+empty_sprite = 5
+
+[node name="Player" parent="." instance=ExtResource("5_u7uxv")]
+position = Vector2(-296, -135)
+
+[node name="Mezzanine" type="Sprite2D" parent="."]
+texture = ExtResource("2_iw1m8")
+
+[node name="Chains" type="Sprite2D" parent="."]
+texture = ExtResource("3_38xy6")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Ghost" parent="." instance=ExtResource("9_nle2v")]
+position = Vector2(-171, 134)
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_p7m80")]
 
-[connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]
+[node name="GameOverScreen" parent="." instance=ExtResource("11_j0o72")]
 
-[editable path="NavigationRegion2D/Cabinet0"]
-[editable path="NavigationRegion2D/Cabinet1"]
-[editable path="NavigationRegion2D/Cabinet2"]
-[editable path="NavigationRegion2D/Cabinet3"]
+[connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]
+[connection signal="caughtyou" from="Ghost" to="Player" method="oncaught"]
+[connection signal="caughtyou" from="Ghost" to="GameOverScreen" method="on_player_caught"]
+[connection signal="reset_to_entry" from="GameOverScreen" to="." method="on_reset_requested"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ovhbcknxn1xe"
-path="res://.godot/imported/Cabinets.png-dd934b360cbbd36385fa633ec7ff5c27.ctex"
+uid="uid://bfkadgq6l3yu3"
+path="res://.godot/imported/staringatchains.png-32ed119d6433fcbdbcc525afa7a4dc53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Cabinets.png"
-dest_files=["res://.godot/imported/Cabinets.png-dd934b360cbbd36385fa633ec7ff5c27.ctex"]
+source_file="res://staringatchains.png"
+dest_files=["res://.godot/imported/staringatchains.png-32ed119d6433fcbdbcc525afa7a4dc53.ctex"]
 
 [params]
 

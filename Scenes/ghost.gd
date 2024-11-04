@@ -5,6 +5,7 @@ var navigationReady: bool = false
 const SPEED=150
 var movement_delta:float
 var next_path_position=self.global_position
+signal caughtyou
 func _ready()->void:
 	pathfinder=get_node("NavigationAgent2D")
 	NavigationServer2D.map_changed.connect(startNavigation)
@@ -43,3 +44,9 @@ func startNavigation(mapRID):
 	pathfinder.set_target_position(self.position)#don't move right away
 	navigationReady=true
 	NavigationServer2D.map_changed.disconnect(startNavigation)
+
+
+func _on_capture_region_body_entered(_body):
+	#consider adding a check that the body in question is the player
+	$AudioStreamPlayer2D.playing=false
+	caughtyou.emit()

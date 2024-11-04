@@ -1,6 +1,7 @@
 extends "InteractableObject.gd"
 @export var contents:Dictionary
 @export var pickuptext:String
+@export var pickupindex:int
 signal rebake_navi
 
 func on_interact(player):

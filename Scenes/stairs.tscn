@@ -29,16 +29,16 @@ size = Vector2(42, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se2db"]
 size = Vector2(66, 55)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_omg1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y00ir"]
+size = Vector2(43, 19)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hasq4"]
 polygon = PackedVector2Array(-21, -18, 21, -18, 21, 78, -21, 78, -21, -18)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qpnk0"]
 polygon = PackedVector2Array(-2, -18, -2, -128, 21, -128, 21, -18)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_omg1y"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y00ir"]
-size = Vector2(43, 19)
 
 [node name="Stairs" type="Node"]
 script = ExtResource("1_xml4r")
@@ -105,6 +105,22 @@ collision_mask = 2
 position = Vector2(1, 17)
 polygon = PackedVector2Array(-20, 40, -65, 40, -65, 60, -20, 60)
 
+[node name="crowbar" parent="." instance=ExtResource("6_7477n")]
+position = Vector2(42, -29)
+texture = ExtResource("8_w26d3")
+contents = {
+"crowbar": 1
+}
+pickuptext = "You got a crowbar!"
+
+[node name="HitboxShape" parent="crowbar/Hitbox" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("CircleShape2D_omg1y")
+
+[node name="InteractionRangeShape" parent="crowbar/InteractionRange" index="0"]
+position = Vector2(0.5, 17.5)
+shape = SubResource("RectangleShape2D_y00ir")
+
 [node name="Player" parent="." instance=ExtResource("3_opiiy")]
 position = Vector2(-41, -79)
 
@@ -127,25 +143,9 @@ collision_mask = 2
 position = Vector2(0, 20)
 polygon = PackedVector2Array(20, 40, 65, 40, 65, 58, 20, 58)
 
-[node name="gettable_object" parent="." instance=ExtResource("6_7477n")]
-position = Vector2(42, -29)
-texture = ExtResource("8_w26d3")
-contents = {
-"crowbar": 1
-}
-pickuptext = "You got a crowbar!"
-
-[node name="HitboxShape" parent="gettable_object/Hitbox" index="0"]
-position = Vector2(0, 0.5)
-shape = SubResource("CircleShape2D_omg1y")
-
-[node name="InteractionRangeShape" parent="gettable_object/InteractionRange" index="0"]
-position = Vector2(0.5, 17.5)
-shape = SubResource("RectangleShape2D_y00ir")
-
 [connection signal="body_entered" from="Down" to="." method="_on_down_entered"]
 [connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]
 [connection signal="body_entered" from="Mid" to="." method="_on_mid_entered"]
 [connection signal="body_entered" from="Up" to="." method="_on_up_entered"]
 
-[editable path="gettable_object"]
+[editable path="crowbar"]

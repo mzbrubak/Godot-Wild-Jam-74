@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://4udjmo7bjf8j"]
+[gd_scene load_steps=19 format=3 uid="uid://4udjmo7bjf8j"]
 
 [ext_resource type="Script" path="res://Scenes/ghost.gd" id="1_3hhar"]
 [ext_resource type="SpriteFrames" uid="uid://ct85xwuj5olfv" path="res://ArtAssets/Ghost.res" id="2_elnyj"]
@@ -10,7 +10,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t5i2a"]
 radius = 5.715
-height = 24.1
+height = 24.0
 
 [sub_resource type="Animation" id="Animation_fqb6w"]
 resource_name = "Down"
@@ -500,6 +500,8 @@ _data = {
 "UpFast": SubResource("Animation_ygemc")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cnxv"]
+
 [node name="Ghost" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 18
@@ -507,6 +509,8 @@ motion_mode = 1
 script = ExtResource("1_3hhar")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_t5i2a")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -527,3 +531,14 @@ libraries = {
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1.0
 target_desired_distance = 1.0
+
+[node name="CaptureRegion" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaptureRegion"]
+position = Vector2(0, 20)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3cnxv")
+
+[connection signal="body_entered" from="CaptureRegion" to="." method="_on_capture_region_body_entered"]
