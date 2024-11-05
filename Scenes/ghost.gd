@@ -12,14 +12,17 @@ func _ready()->void:
 	
 func set_movement_target(movement_target:Vector2):
 	if navigationReady:
+		print('Navigation Ready')
 		pathfinder.set_target_position(movement_target);
 
 func IHEARYOU(pos):
 	print("I HEAR YOU AT "+str(pos.x),","+str(pos.y))
 	set_movement_target(pos)
 
-func physics_process(_delta):
-	next_path_position=$NavigationAgent2D.get_next_path_position()
+func _physics_process(_delta):
+	print("Cogito ergo sum")
+	next_path_position=pathfinder.get_next_path_position()
+	print(next_path_position)
 	velocity = global_position.direction_to(next_path_position)*SPEED
 	move_and_slide()
 	if velocity==Vector2(0,0):
@@ -44,6 +47,7 @@ func startNavigation(mapRID):
 	pathfinder.set_target_position(self.position)#don't move right away
 	navigationReady=true
 	NavigationServer2D.map_changed.disconnect(startNavigation)
+	print("This part worked, at least in principle")
 
 
 func _on_capture_region_body_entered(_body):
