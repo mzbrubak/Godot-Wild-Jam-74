@@ -105,7 +105,7 @@ collision_mask = 2
 position = Vector2(1, 17)
 polygon = PackedVector2Array(-20, 40, -65, 40, -65, 60, -20, 60)
 
-[node name="crowbar" parent="." instance=ExtResource("6_7477n")]
+[node name="crowbar" parent="." groups=["Gettables"] instance=ExtResource("6_7477n")]
 position = Vector2(42, -29)
 texture = ExtResource("8_w26d3")
 contents = {
@@ -144,6 +144,7 @@ position = Vector2(0, 20)
 polygon = PackedVector2Array(20, 40, 65, 40, 65, 58, 20, 58)
 
 [connection signal="body_entered" from="Down" to="." method="_on_down_entered"]
+[connection signal="gettable_got" from="crowbar" to="." method="on_pickup_pickedup"]
 [connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]
 [connection signal="body_entered" from="Mid" to="." method="_on_mid_entered"]
 [connection signal="body_entered" from="Up" to="." method="_on_up_entered"]

@@ -61,6 +61,11 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg")
 
+[global_group]
+
+Gettables=""
+Searchables=""
+
 [input]
 
 Up={

@@ -2,12 +2,18 @@ extends "InteractableObject.gd"
 @export var contents:Dictionary
 @export var pickuptext:String
 @export var pickupindex:int
-signal rebake_navi
+signal gettable_got(index:int)
 
 func on_interact(player):
 	player.show_text(pickuptext)
 	player.add_to_inventory(contents);
 	player.unregister(self);
 	#do something to savefile
+	gettable_got.emit(pickupindex)
 	self.queue_free();
-	rebake_navi.emit()
+
+func setstatefromsave():
+	print(self," has been found in a group!")
+	if SaveData.pickup_flag_list[pickupindex]:
+		gettable_got.emit(pickupindex)
+		self.queue_free();

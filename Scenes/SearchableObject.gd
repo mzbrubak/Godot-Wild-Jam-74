@@ -9,7 +9,7 @@ var searched=false;
 @export var full_sprite:int
 @export var empty_sprite:int
 @export var locked_text:String
-signal searchable_searched
+signal searchable_searched(index: int)
 
 func _ready():
 	if SaveData.searchable_flag_list[searchableindex]==true:
@@ -38,3 +38,10 @@ func on_successful_search(player):
 	self.frame=empty_sprite
 	searched=true
 	searchable_searched.emit(searchableindex)
+	
+func setstatefromsave():
+	print(self," has been found in a group!")
+	if SaveData.searchable_flag_list[searchableindex]:#i.e. if this spot's been searched according to save data
+		self.frame=empty_sprite
+		searched=true
+		searchable_searched.emit(searchableindex)

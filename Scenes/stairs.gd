@@ -5,7 +5,8 @@ var rng=RandomNumberGenerator.new()
 
 func _ready():
 	SaveData.from="Stairs"
-	pickup_flag_list=SaveData.pickup_flag_list
+	pickup_flag_list=SaveData.pickup_flag_list.duplicate(true)
+	parse_flags()
 
 func _on_down_entered(_player):
 	if last_entered=="mid":
@@ -32,7 +33,8 @@ func changecollision(state):
 	$Walls/THESTAIRSLIEcollision.disabled=state
 
 func parse_flags():
-	pass
+	get_tree().call_group("Gettables","setstatefromsave")
+	#this scene has no searchables
 
 func on_pickup_pickedup(pickupindex):
 	pickup_flag_list[pickupindex]=true

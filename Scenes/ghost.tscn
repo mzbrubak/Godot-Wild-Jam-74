@@ -181,8 +181,8 @@ libraries = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 1.0
-target_desired_distance = 1.0
+path_desired_distance = 10.0
+target_desired_distance = 15.0
 
 [node name="CaptureRegion" type="Area2D" parent="."]
 collision_layer = 32

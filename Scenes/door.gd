@@ -5,6 +5,7 @@ extends "InteractableObject.gd"
 @export var lockedtext:String = "The door is locked, and you don't have the right key."
 @export var destination:String = ""
 var player_ref
+signal room_exited
 func on_interact(player):
 	if locked:
 		if player.check_inventory({keyid: 1}):
@@ -22,4 +23,5 @@ func on_interact(player):
 func on_interact_end(status):
 	if status==false:
 		SaveData.inventory=player_ref.inventory
+		room_exited.emit()
 		get_tree().change_scene_to_file(destination);

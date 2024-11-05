@@ -46,6 +46,7 @@ script = ExtResource("1_1arhn")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Floor" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_61pid")
 
 [node name="Door" parent="." instance=ExtResource("4_c2783")]
@@ -78,7 +79,7 @@ shape = SubResource("RectangleShape2D_fdlp0")
 position = Vector2(-274, -40.5)
 shape = SubResource("RectangleShape2D_lqagn")
 
-[node name="stairkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+[node name="stairkey" parent="NavigationRegion2D" groups=["Gettables"] instance=ExtResource("12_xpse0")]
 position = Vector2(306, -112)
 frame = 0
 contents = {
@@ -87,7 +88,7 @@ contents = {
 pickuptext = "You found the stair key!"
 pickupindex = 1
 
-[node name="bronzekey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+[node name="bronzekey" parent="NavigationRegion2D" groups=["Gettables"] instance=ExtResource("12_xpse0")]
 position = Vector2(288, -33)
 spriteindex = 3
 contents = {
@@ -96,7 +97,7 @@ contents = {
 pickuptext = "You got a bronze key!"
 pickupindex = 2
 
-[node name="silverkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+[node name="silverkey" parent="NavigationRegion2D" groups=["Gettables"] instance=ExtResource("12_xpse0")]
 position = Vector2(75, -48)
 frame = 2
 spriteindex = 2
@@ -106,7 +107,7 @@ contents = {
 pickuptext = "You got a silver key!"
 pickupindex = 3
 
-[node name="goldkey" parent="NavigationRegion2D" instance=ExtResource("12_xpse0")]
+[node name="goldkey" parent="NavigationRegion2D" groups=["Gettables"] instance=ExtResource("12_xpse0")]
 position = Vector2(-41, -47)
 frame = 1
 spriteindex = 1
@@ -116,7 +117,7 @@ contents = {
 pickuptext = "You got a gold key!"
 pickupindex = 4
 
-[node name="Cabinet0" parent="NavigationRegion2D" instance=ExtResource("9_ji3dj")]
+[node name="Cabinet0" parent="NavigationRegion2D" groups=["Searchables"] instance=ExtResource("9_ji3dj")]
 position = Vector2(48, 12)
 locked = false
 keyid = ""
@@ -127,26 +128,29 @@ search_text = "You found a part!"
 full_sprite = 3
 empty_sprite = 7
 
-[node name="Cabinet1" parent="NavigationRegion2D" instance=ExtResource("9_ji3dj")]
+[node name="Cabinet1" parent="NavigationRegion2D" groups=["Searchables"] instance=ExtResource("9_ji3dj")]
 position = Vector2(-64, 83)
+searchableindex = 1
 contents = {
 "medium_screwdriver": 1
 }
 search_text = "You found a screwdriver"
 full_sprite = 2
 
-[node name="Cabinet2" parent="NavigationRegion2D" instance=ExtResource("9_ji3dj")]
+[node name="Cabinet2" parent="NavigationRegion2D" groups=["Searchables"] instance=ExtResource("9_ji3dj")]
 position = Vector2(86, 83)
 keyid = "key2"
+searchableindex = 2
 contents = {
 "small_screwdriver": 1
 }
 search_text = "You found a screwdriver"
 empty_sprite = 4
 
-[node name="Cabinet3" parent="NavigationRegion2D" instance=ExtResource("9_ji3dj")]
+[node name="Cabinet3" parent="NavigationRegion2D" groups=["Searchables"] instance=ExtResource("9_ji3dj")]
 position = Vector2(-131, 50)
 keyid = "key3"
+searchableindex = 3
 contents = {
 "large_screwdriver": 1
 }
@@ -174,6 +178,15 @@ position = Vector2(-171, 134)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("11_j0o72")]
 
+[connection signal="room_exited" from="Door" to="." method="on_save_requested"]
+[connection signal="gettable_got" from="NavigationRegion2D/stairkey" to="." method="_on_gettable_got"]
+[connection signal="gettable_got" from="NavigationRegion2D/bronzekey" to="." method="_on_gettable_got"]
+[connection signal="gettable_got" from="NavigationRegion2D/silverkey" to="." method="_on_gettable_got"]
+[connection signal="gettable_got" from="NavigationRegion2D/goldkey" to="." method="_on_gettable_got"]
+[connection signal="searchable_searched" from="NavigationRegion2D/Cabinet0" to="." method="on_searchable_searched"]
+[connection signal="searchable_searched" from="NavigationRegion2D/Cabinet1" to="." method="on_searchable_searched"]
+[connection signal="searchable_searched" from="NavigationRegion2D/Cabinet2" to="." method="on_searchable_searched"]
+[connection signal="searchable_searched" from="NavigationRegion2D/Cabinet3" to="." method="on_searchable_searched"]
 [connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]
 [connection signal="caughtyou" from="Ghost" to="Player" method="oncaught"]
 [connection signal="caughtyou" from="Ghost" to="GameOverScreen" method="on_player_caught"]

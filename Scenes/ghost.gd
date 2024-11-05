@@ -5,6 +5,7 @@ var navigationReady: bool = false
 const SPEED=150
 var movement_delta:float
 var next_path_position=self.global_position
+var patrolpoints=[Vector2(0,0), Vector2(100,100)]
 signal caughtyou
 func _ready()->void:
 	pathfinder=get_node("NavigationAgent2D")
@@ -12,7 +13,6 @@ func _ready()->void:
 	
 func set_movement_target(movement_target:Vector2):
 	if navigationReady:
-		print('Navigation Ready')
 		pathfinder.set_target_position(movement_target);
 
 func IHEARYOU(pos):
@@ -20,9 +20,7 @@ func IHEARYOU(pos):
 	set_movement_target(pos)
 
 func _physics_process(_delta):
-	print("Cogito ergo sum")
 	next_path_position=pathfinder.get_next_path_position()
-	print(next_path_position)
 	velocity = global_position.direction_to(next_path_position)*SPEED
 	move_and_slide()
 	if velocity==Vector2(0,0):
@@ -47,7 +45,7 @@ func startNavigation(mapRID):
 	pathfinder.set_target_position(self.position)#don't move right away
 	navigationReady=true
 	NavigationServer2D.map_changed.disconnect(startNavigation)
-	print("This part worked, at least in principle")
+	set_movement_target(patrolpoints[0])#won't move at start otherwise
 
 
 func _on_capture_region_body_entered(_body):
