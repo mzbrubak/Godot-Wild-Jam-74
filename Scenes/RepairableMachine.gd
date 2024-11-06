@@ -1,55 +1,31 @@
 extends "InteractableObject.gd"
 @export var needs_catalyst:Dictionary = {"large_screwdriver":1}
-@export var needs_component:Dictionary = {"wire":7,"large_capacitor":3,"switch":1}
-@export var currentfloor:int
+@export var needs_component:Dictionary = {"wire":1}
+@export var no_catalyst_text:String = "You can't start repairing the machine without removing the outer casing, and you don't have a screwdriver of the right size. Maybe you can find one?"
+@export var no_component_text:String = "After removing the outer casing, you are able to assess what parts you need to fix the machine.  Unfortunately, you don't have the right parts."
+@export var fixing_text:String = "You have everything you need to fix this machine. You fix the machine as quickly and quietly as you can."
+@export var fixed_text:String = "You admire your handiwork as you stare at this already-repaired machine."
+@export var machine_index:int = 0
+@export var brokenframe:int=0
 var fixed=false
-var player_ref
-var destination
 
-#note: need to revert this to a version that makes sense for non-elevator objects
 func on_interact(player):
-	var textout
-	if currentfloor==1 and SaveData.lightsout==false:
-		textout="You take the elevator down to the basement."
-		player.show_text(textout)
-		player.dialoguepause_requested.connect(on_interact_end)
-		player_ref=player
-		destination="res://Scenes/hallway.tscn"
-	elif currentfloor==1:
-		textout="You have no particular desire to go back down the elevator."
-		player.show_text(textout)
-	elif SaveData.lightsout==false:
-		textout="Your sense of professional integrity prevents you from leaving now."
-		player.show_text(textout)
-	else:
-		if fixed:
-			if player.check_inventory({"crowbar":1}):
-				textout=("You force the elevator door open with the crowbar, then take the elevator back up to the lobby.")
-				player.show_text(textout)
-				player.dialoguepause_requested.connect(on_interact_end)
-				player_ref=player
-				destination="res://Scenes/testmap.tscn"
-			else:
-				textout="The elevator door is stuck shut."
-				player.show_text(textout)
-			return
-		var has_catalysts=player.check_inventory(needs_catalyst);
-		if has_catalysts==false:
-			textout="You lack the tools you need to fix the elevator panel."
-			player.show_text(textout)
-			return
-		var has_components=player.check_inventory(needs_component);
-		if has_components==false:
-			textout="You need more (or different) parts to fix the elevator panel."
-			player.show_text(textout)
-			return
-		player.remove_from_inventory(needs_component)
-		needs_component.clear();
-		textout="You fix the elevator panel!"
-		player.show_text(textout)
-		fixed=true
+	if fixed:#if you already fixed it
+		player.show_text(fixed_text)
+	elif player.check_inventory(needs_catalyst)==false:#if you don't have tools
+		player.show_text(no_catalyst_text)
+	elif player.check_inventory(needs_component)==false:#if you don't have parts
+		player.show_text(no_component_text)
+	else:#time to fix it!
+		on_successful_fix(player)
 
-func on_interact_end(status):
-	if status==false:
-		SaveData.inventory=player_ref.inventory
-		get_tree().change_scene_to_file(destination);
+func on_successful_fix(player):
+	player.show_text(fixing_text)
+	player.remove_from_inventory(needs_component)
+	self.frame=self.frame+3
+	$Redlight.enabled=false
+	$Greenlight.enabled=true
+	fixed=true
+	
+func setstatefromsave():
+	pass

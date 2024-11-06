@@ -13,7 +13,6 @@ func on_interact(player):
 	self.queue_free();
 
 func setstatefromsave():
-	print(self," has been found in a group!")
 	if SaveData.pickup_flag_list[pickupindex]:
 		gettable_got.emit(pickupindex)
 		self.queue_free();

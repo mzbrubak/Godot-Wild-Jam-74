@@ -40,7 +40,6 @@ func on_successful_search(player):
 	searchable_searched.emit(searchableindex)
 	
 func setstatefromsave():
-	print(self," has been found in a group!")
 	if SaveData.searchable_flag_list[searchableindex]:#i.e. if this spot's been searched according to save data
 		self.frame=empty_sprite
 		searched=true
