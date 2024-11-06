@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c4xwlv7pjcmsf"]
+[gd_scene load_steps=16 format=4 uid="uid://c4xwlv7pjcmsf"]
 
 [ext_resource type="Script" path="res://Scenes/testmap.gd" id="1_8200b"]
 [ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="1_p1ei0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bti350dolbidc" path="res://ArtAssets/Floor.png" id="2_vhmqu"]
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer2D.gd" id="4_fn7gl"]
 [ext_resource type="Script" path="res://Scenes/CanvasModulate.gd" id="6_y3fk6"]
+[ext_resource type="PackedScene" uid="uid://chis0nagrv7ri" path="res://Scenes/doormat.tscn" id="10_3qw8n"]
 [ext_resource type="PackedScene" uid="uid://rsuxbe2c44kc" path="res://Scenes/door.tscn" id="11_c07vj"]
 [ext_resource type="PackedScene" uid="uid://d0idxa3bkk85o" path="res://Scenes/elevator.tscn" id="11_oq5mm"]
 [ext_resource type="Texture2D" uid="uid://dnrfvvf352sx4" path="res://ArtAssets/Light64.png" id="12_6w8gl"]
@@ -68,6 +69,7 @@ high_pass_filter/cutoff_frequency = 0.131964
 high_pass_filter/cutoff_sweep = 0.0181426
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_y3fk6")
 
@@ -97,6 +99,9 @@ shape = SubResource("WorldBoundaryShape2D_y0u73")
 [node name="Elevator" parent="." instance=ExtResource("11_oq5mm")]
 position = Vector2(44, -119)
 currentfloor = 1
+
+[node name="Doormat" parent="." instance=ExtResource("10_3qw8n")]
+position = Vector2(0, 161)
 
 [node name="Player" parent="." instance=ExtResource("1_p1ei0")]
 position = Vector2(63, 77)

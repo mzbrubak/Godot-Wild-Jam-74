@@ -8,28 +8,28 @@ var destination
 
 func on_interact(player):
 	var textout
-	if currentfloor==1 and SaveData.lightsout==false:
+	if currentfloor==1 and SaveData.prologue==true:#first interaction
 		textout="You take the elevator down to the basement."
 		player.show_text(textout)
 		player.dialoguepause_requested.connect(on_interact_end)
 		player_ref=player
 		destination="res://Scenes/hallway.tscn"
-	elif currentfloor==1:
+	elif currentfloor==1:#after fixing the elevator and entering it
 		textout="You have no particular desire to go back down the elevator."
 		player.show_text(textout)
-	elif SaveData.lightsout==false:
+	elif SaveData.prologue==true:#if interacting from basement but before leaving lab
 		textout="Your sense of professional integrity prevents you from leaving now."
 		player.show_text(textout)
 	else:
 		if fixed:
 			if player.check_inventory({"crowbar":1}):
-				textout=("You force the elevator door open with the crowbar, then take the elevator back up to the lobby.")
+				textout=("You pry the elevator door open with the crowbar, then take the elevator back up to the lobby.")
 				player.show_text(textout)
 				player.dialoguepause_requested.connect(on_interact_end)
 				player_ref=player
 				destination="res://Scenes/testmap.tscn"
 			else:
-				textout="The elevator door is stuck shut."
+				textout="The elevator door is stuck shut. You need a tool to help pry it open."
 				player.show_text(textout)
 			return
 		var has_catalysts=player.check_inventory(needs_catalyst);

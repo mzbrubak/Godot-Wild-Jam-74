@@ -5,7 +5,7 @@ func _ready():
 	$"Credits Screen".visible=false;
 
 func _on_new_game_button_pressed():
-	#get_tree().change_scene_to_file("res://Scenes/testmap.tscn");
+	SaveData.startnewgame()#so I don't have to implement continues for now
 	get_tree().change_scene_to_file("res://Scenes/testmap.tscn")
 
 func _on_options_button_pressed():

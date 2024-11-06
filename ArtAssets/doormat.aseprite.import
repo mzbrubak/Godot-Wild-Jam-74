@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ctjbglr2l6rgd"
+path="res://.godot/imported/doormat.aseprite-de58b958d42702efae14487326a87a8d.res"
+
+[deps]
+
+source_file="res://ArtAssets/doormat.aseprite"
+dest_files=["res://.godot/imported/doormat.aseprite-de58b958d42702efae14487326a87a8d.res"]
+
+[params]
+

@@ -5,6 +5,7 @@ var searchable_flag_list=[false,false,false,false]
 
 func _ready():
 	SaveData.lightsout=true;#update this, bad flag approach
+	SaveData.prologue=false;
 	$Player/PointLight2D.enabled=true
 	$Player/QuietFootstepRange.IMHERE.connect($Ghost.IHEARYOU)
 	$Player/LoudFootstepRange.IMHERE.connect($Ghost.IHEARYOU)
