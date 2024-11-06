@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4fvqw5fkcies"]
+[gd_scene load_steps=21 format=3 uid="uid://b4fvqw5fkcies"]
 
 [ext_resource type="Script" path="res://Scenes/lab.gd" id="1_1arhn"]
 [ext_resource type="Texture2D" uid="uid://b24g67ktrwffl" path="res://ArtAssets/Lab_GroundFloor.png" id="1_61pid"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://rsuxbe2c44kc" path="res://Scenes/door.tscn" id="4_c2783"]
 [ext_resource type="PackedScene" uid="uid://bynsrjsdfwnk3" path="res://Scenes/player.tscn" id="5_u7uxv"]
 [ext_resource type="PackedScene" uid="uid://brlgx8da08bii" path="res://Scenes/repairable_machine.tscn" id="6_3h3qd"]
+[ext_resource type="PackedScene" uid="uid://bl8bxtvmqglo2" path="res://Scenes/pointmarker.tscn" id="7_jb0jr"]
 [ext_resource type="PackedScene" uid="uid://cm7sbd4nd3nbe" path="res://Scenes/cabinet.tscn" id="9_ji3dj"]
 [ext_resource type="PackedScene" uid="uid://4udjmo7bjf8j" path="res://Scenes/ghost.tscn" id="9_nle2v"]
 [ext_resource type="PackedScene" uid="uid://1rs7ilg6rm" path="res://Scenes/PauseMenu.tscn" id="10_p7m80"]
@@ -14,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://0xybnneums2j" path="res://Scenes/key.tscn" id="12_xpse0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8k3t5"]
-vertices = PackedVector2Array(303, -20, 303, -46, 306.25, -47, 306.969, 167, 273, -20, 108, 52.5, 70, 40, 70, -18.5, 108, 111, -307, 167, 64, 111, -42, 111, -86, 111, 90, -47, 273, -46, -109, 78, -109, 19.5, -86, 52.5, 26, -18.5, 26, 40, 5, 22, 5, -30, -153, 78, 64, 52.5, 90, -35, 60, -35, -307, -113.008, 291, -113.961, 291, -110, -286, -110, -286, -14, -262, -14, -153, 19.5, -262, -47, -56, -47, -56, -34, -26, -34, -26, -47, 60, -47, -42, 52.5, -47, 22, -47, -30)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 5, 6, 7), PackedInt32Array(8, 3, 9, 10), PackedInt32Array(11, 10, 9), PackedInt32Array(12, 11, 9), PackedInt32Array(13, 2, 1, 14), PackedInt32Array(15, 16, 17, 12), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(15, 12, 9, 22), PackedInt32Array(0, 3, 8, 5), PackedInt32Array(6, 5, 23, 19), PackedInt32Array(24, 13, 14, 4), PackedInt32Array(25, 24, 4, 7, 18, 21), PackedInt32Array(26, 27, 28, 29), PackedInt32Array(9, 26, 29, 30), PackedInt32Array(22, 9, 30, 31, 32), PackedInt32Array(16, 32, 31, 33, 34, 35), PackedInt32Array(36, 37, 38, 25, 21), PackedInt32Array(19, 23, 10, 11, 39), PackedInt32Array(40, 20, 19, 39, 17), PackedInt32Array(40, 17, 16, 35, 41), PackedInt32Array(41, 35, 36, 21)])
+vertices = PackedVector2Array(303, -20, 303, -46, 306.25, -47, 306.969, 167, 273, -20, 298, 94, 246, 94, 108, 52.5, 70, 40, 70, -18.5, 241, -47, 273, -46, 298, 146, -109, 78, -109, 19.5, -86, 52.5, -86, 111, 26, -18.5, 26, 40, 5, 22, 5, -30, 209, 167, 246, 146, 209, 133, 108, 111, 157, 133, 64, 52.5, 241, -29, 189, -29, -307, -113.008, 291, -113.961, 291, -110, -286, -110, -307, 123, -286, -14, -153, 78, -266, 123, -262, -14, -153, 19.5, -262, -47, -56, -47, -56, -34, -26, -34, -26, -47, 60, -47, 60, -35, 90, -35, 90, -47, 189, -47, 64, 111, -42, 111, -42, 52.5, -47, 22, -47, -30, 157, 167, -266, 167)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 5, 6, 7, 8, 9), PackedInt32Array(10, 2, 1, 11), PackedInt32Array(0, 3, 12, 5), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(12, 3, 21, 22), PackedInt32Array(22, 21, 23, 6), PackedInt32Array(24, 7, 6, 23, 25), PackedInt32Array(8, 7, 26, 18), PackedInt32Array(27, 10, 11, 4), PackedInt32Array(27, 4, 9, 28), PackedInt32Array(29, 30, 31, 32), PackedInt32Array(33, 29, 32, 34), PackedInt32Array(35, 36, 33, 34, 37, 38), PackedInt32Array(38, 37, 39, 40, 41, 14), PackedInt32Array(42, 43, 44, 45, 20), PackedInt32Array(46, 47, 48, 28), PackedInt32Array(45, 46, 28, 9, 17, 20), PackedInt32Array(18, 26, 49, 50, 51), PackedInt32Array(52, 19, 18, 51, 15), PackedInt32Array(53, 52, 15, 14, 41), PackedInt32Array(24, 25, 54, 55, 49), PackedInt32Array(50, 49, 55), PackedInt32Array(16, 50, 55), PackedInt32Array(35, 13, 16, 55, 36), PackedInt32Array(53, 41, 42, 20)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-317, -123, 316, -124, 317, 177, -317, 177)])
 parsed_collision_mask = 13
 source_geometry_group_name = &"navigation_polygon_source_group"
@@ -47,10 +48,11 @@ script = ExtResource("1_1arhn")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Floor" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_61pid")
 
 [node name="Door" parent="." instance=ExtResource("4_c2783")]
-position = Vector2(-296, -153)
+position = Vector2(-296, -154)
 destination = "res://Scenes/hallway.tscn"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -172,6 +174,22 @@ position = Vector2(183, 159)
 
 [node name="RepairableMachine5" parent="NavigationRegion2D" instance=ExtResource("6_3h3qd")]
 position = Vector2(-292, 149)
+
+[node name="Sprite2D" parent="NavigationRegion2D" instance=ExtResource("7_jb0jr")]
+visible = false
+position = Vector2(290, 160)
+
+[node name="Sprite2D2" parent="NavigationRegion2D" instance=ExtResource("7_jb0jr")]
+visible = false
+position = Vector2(287, -4)
+
+[node name="Sprite2D3" parent="NavigationRegion2D" instance=ExtResource("7_jb0jr")]
+visible = false
+position = Vector2(-237, -30)
+
+[node name="Sprite2D4" parent="NavigationRegion2D" instance=ExtResource("7_jb0jr")]
+visible = false
+position = Vector2(-236, 151)
 
 [node name="Player" parent="." instance=ExtResource("5_u7uxv")]
 position = Vector2(-296, -135)

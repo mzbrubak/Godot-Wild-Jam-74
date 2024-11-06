@@ -193,4 +193,10 @@ position = Vector2(0, 20)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3cnxv")
 
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="on_navigation_finished"]
 [connection signal="body_entered" from="CaptureRegion" to="." method="_on_capture_region_body_entered"]
+[connection signal="timeout" from="WaitTimer" to="." method="return_to_patrol"]

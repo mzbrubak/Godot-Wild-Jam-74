@@ -1,11 +1,13 @@
 extends CharacterBody2D
 var pathfinder
 var navigationReady: bool = false
+var navigationfinished: bool=false
 @onready var _animation_player=$AnimationPlayer
-const SPEED=150
+const SPEED=125
 var movement_delta:float
 var next_path_position=self.global_position
-var patrolpoints=[Vector2(0,0), Vector2(100,100)]
+var patrolpoints=[Vector2(290,160), Vector2(287,-4),Vector2(-237,-30),Vector2(-236,151)]
+var patrolindex=0
 var chase_paused=false
 signal caughtyou
 func _ready()->void:
@@ -17,10 +19,13 @@ func set_movement_target(movement_target:Vector2):
 		pathfinder.set_target_position(movement_target);
 
 func IHEARYOU(pos):
+	$WaitTimer.stop()
+	navigationfinished=false
+	patrolindex=-1#reserved for chasing state
 	set_movement_target(pos)
 
 func _physics_process(_delta):
-	if chase_paused:
+	if chase_paused or navigationfinished:
 		return
 	next_path_position=pathfinder.get_next_path_position()
 	velocity = global_position.direction_to(next_path_position)*SPEED
@@ -56,3 +61,17 @@ func _on_capture_region_body_entered(_body):
 	_animation_player.stop()
 	chase_paused=true
 	caughtyou.emit()
+
+func on_navigation_finished():
+	navigationfinished=true
+	$WaitTimer.start()
+	pass
+
+func return_to_patrol():
+	navigationfinished=false
+	if patrolindex==-1:
+		var squaredistances=patrolpoints.map(func(element):return element.distance_squared_to(self.global_position))
+		patrolindex=squaredistances.find(squaredistances.min())
+	else:
+		patrolindex=(patrolindex+1)%patrolpoints.size()
+	set_movement_target(patrolpoints[patrolindex])
