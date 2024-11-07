@@ -505,10 +505,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ff4pb"]
-radius = 39.1152
+radius = 75.0267
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3tpvr"]
-radius = 137.004
+radius = 195.064
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2

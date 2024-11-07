@@ -28,6 +28,7 @@ func on_reset_requested():
 func parse_flags():
 	get_tree().call_group("Gettables","setstatefromsave")
 	get_tree().call_group("Searchables","setstatefromsave")
+	get_tree().call_group("Machines","setstatefromsave")
 
 func on_searchable_searched(searchable_index:int):
 	searchable_flag_list[searchable_index]=true
@@ -41,3 +42,7 @@ func on_save_requested():
 func _on_gettable_got(index:int): #note: code is spaghetti, inconsistent names.  be more aware/proactive of this next jam
 	pickup_flag_list[index]=true
 	#rebake_navi() this honestly isn't necessary for this prototype, and causes too many bake requests on reloading room
+
+func on_machine_repaired(index:int):
+	machines_repaired[index]=true
+	$Computer.unrepairedcount-=1

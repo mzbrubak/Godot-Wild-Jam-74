@@ -6,7 +6,7 @@ var navigationfinished: bool=false
 const SPEED=125
 var movement_delta:float
 var next_path_position=self.global_position
-var patrolpoints=[Vector2(290,160), Vector2(287,-4),Vector2(-237,-30),Vector2(-236,151)]
+var patrolpoints=[Vector2(253,106), Vector2(251,-59),Vector2(-32,-41),Vector2(77,83),Vector2(-145,-25),Vector2(-282,110)]
 var patrolindex=0
 var chase_paused=false
 signal caughtyou
@@ -75,3 +75,8 @@ func return_to_patrol():
 	else:
 		patrolindex=(patrolindex+1)%patrolpoints.size()
 	set_movement_target(patrolpoints[patrolindex])
+
+func on_dialog_pause(state:bool):
+	chase_paused=state
+	$WaitTimer.paused=state
+	pass

@@ -2,7 +2,7 @@ extends CharacterBody2D
 const RUNSPEED = 300
 const WALKSPEED = 100
 signal pause_requested
-signal dialoguepause_requested
+signal dialoguepause_requested(state:bool)
 var facing=Vector2(0,0);
 var interactioncandidates=[];
 var inventory:Dictionary

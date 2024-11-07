@@ -8,6 +8,10 @@ extends "InteractableObject.gd"
 @export var machine_index:int = 0
 @export var brokenframe:int=0
 var fixed=false
+signal machine_repaired(index:int)
+
+func _ready():
+	frame=brokenframe
 
 func on_interact(player):
 	if fixed:#if you already fixed it
@@ -24,8 +28,15 @@ func on_successful_fix(player):
 	player.remove_from_inventory(needs_component)
 	self.frame=self.frame+3
 	$Redlight.enabled=false
+	$Redlight/Timer.stop()
 	$Greenlight.enabled=true
 	fixed=true
+	machine_repaired.emit(machine_index)
 	
 func setstatefromsave():
-	pass
+	if SaveData.machines_repaired[machine_index]==true:
+		fixed=true
+		frame=brokenframe+3
+		$Redlight.enabled=false
+		$Redlight/Timer.stop()
+		$Greenlight.enabled=true

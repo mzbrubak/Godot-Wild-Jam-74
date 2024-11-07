@@ -65,6 +65,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 
 Gettables=""
 Searchables=""
+Machines=""
 
 [input]
 

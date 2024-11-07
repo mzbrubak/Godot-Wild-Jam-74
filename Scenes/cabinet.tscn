@@ -7,7 +7,7 @@
 size = Vector2(24, 38.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7vbc"]
-radius = 12.0
+radius = 18.0
 height = 50.0
 
 [node name="Cabinet1" type="Sprite2D"]

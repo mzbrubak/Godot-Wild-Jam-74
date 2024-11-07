@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://brlgx8da08bii"]
+[gd_scene load_steps=7 format=3 uid="uid://brlgx8da08bii"]
 
 [ext_resource type="Texture2D" uid="uid://kiqfrf4k8flk" path="res://ArtAssets/Machine.png" id="1_1s2vj"]
 [ext_resource type="Script" path="res://Scenes/RepairableMachine.gd" id="2_18d2s"]
 [ext_resource type="Texture2D" uid="uid://dnrfvvf352sx4" path="res://ArtAssets/Light64.png" id="3_lhy75"]
+[ext_resource type="Script" path="res://Scenes/flickerlight.gd" id="4_v222p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug43"]
 size = Vector2(32, 32)
@@ -34,8 +35,8 @@ shape = SubResource("CircleShape2D_hbnsk")
 position = Vector2(12, 12)
 enabled = false
 color = Color(0.294118, 0.564706, 0.184314, 1)
+energy = 2.5
 texture = ExtResource("3_lhy75")
-texture_scale = 0.5
 
 [node name="Redlight" type="PointLight2D" parent="."]
 position = Vector2(12, 8)
@@ -43,6 +44,11 @@ color = Color(0.784314, 0.196078, 0.196078, 1)
 energy = 1.75
 texture = ExtResource("3_lhy75")
 texture_scale = 0.5
+script = ExtResource("4_v222p")
+
+[node name="Timer" type="Timer" parent="Redlight"]
+wait_time = 0.4
+autostart = true
 
 [connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]

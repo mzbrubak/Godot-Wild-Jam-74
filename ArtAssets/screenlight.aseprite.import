@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bviibdfvuu7w5"
+path="res://.godot/imported/screenlight.aseprite-969c97300d4d50f4464e48b15a170bff.res"
+
+[deps]
+
+source_file="res://ArtAssets/screenlight.aseprite"
+dest_files=["res://.godot/imported/screenlight.aseprite-969c97300d4d50f4464e48b15a170bff.res"]
+
+[params]
+

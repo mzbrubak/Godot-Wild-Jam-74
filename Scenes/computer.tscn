@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://csbe8cglanef1"]
+
+[ext_resource type="Texture2D" uid="uid://cla15hbiihfdc" path="res://ArtAssets/computer.png" id="1_nqf0s"]
+[ext_resource type="Script" path="res://Scenes/computer.gd" id="2_sadme"]
+[ext_resource type="Texture2D" uid="uid://dnrfvvf352sx4" path="res://ArtAssets/Light64.png" id="2_yoxxc"]
+[ext_resource type="AudioStream" uid="uid://cg78xgdoasarw" path="res://AudioSamples/THESHADOWAPPROACHES.wav" id="3_nkqvg"]
+[ext_resource type="Script" path="res://Scenes/flickerlight.gd" id="4_wpoy7"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vyo1o"]
+polygon = PackedVector2Array(-14, 6, -14, 24, -14, 36, 16, 36, 16, 24, 16, 6, 14, 6, 14, 34, -12, 34, -12, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rgle"]
+size = Vector2(40, 64)
+
+[node name="Computer" type="Sprite2D"]
+texture = ExtResource("1_nqf0s")
+script = ExtResource("2_sadme")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 24)
+shadow_enabled = true
+texture = ExtResource("2_yoxxc")
+texture_scale = 3.0
+script = ExtResource("4_wpoy7")
+
+[node name="Timer" type="Timer" parent="PointLight2D"]
+wait_time = 0.1
+autostart = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_vyo1o")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nkqvg")
+volume_db = -12.89
+
+[node name="InteractionRange" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="InteractionRangeShape" type="CollisionShape2D" parent="InteractionRange"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_2rgle")
+
+[connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
+[connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]
