@@ -80,3 +80,6 @@ func on_dialog_pause(state:bool):
 	chase_paused=state
 	$WaitTimer.paused=state
 	pass
+
+func despawn():
+	self.queue_free()

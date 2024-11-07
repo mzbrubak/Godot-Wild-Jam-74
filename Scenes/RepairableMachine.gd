@@ -1,5 +1,5 @@
 extends "InteractableObject.gd"
-@export var needs_catalyst:Dictionary = {"large_screwdriver":1}
+@export var needs_catalyst:Dictionary = {}
 @export var needs_component:Dictionary = {"wire":1}
 @export var no_catalyst_text:String = "You can't start repairing the machine without removing the outer casing, and you don't have a screwdriver of the right size. Maybe you can find one?"
 @export var no_component_text:String = "After removing the outer casing, you are able to assess what parts you need to fix the machine.  Unfortunately, you don't have the right parts."

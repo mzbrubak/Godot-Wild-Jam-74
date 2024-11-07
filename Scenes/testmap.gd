@@ -1,5 +1,10 @@
 extends Node
 
 func _ready():
-	$Player/AnimationPlayer.current_animation="Up"
-	$Player/AnimationPlayer.stop()
+	if SaveData.prologue:
+		$Player/AnimationPlayer.current_animation="Up"
+		$Player/AnimationPlayer.stop()
+	else:
+		$Player.position=Vector2(31,-71)
+		$Player/AnimationPlayer.current_animation="Down"
+		$Player/AnimationPlayer.stop()

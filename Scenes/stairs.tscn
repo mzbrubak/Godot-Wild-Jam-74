@@ -35,7 +35,7 @@ size = Vector2(66, 55)
 size = Vector2(43, 19)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hasq4"]
-polygon = PackedVector2Array(-21, -18, 21, -18, 21, 78, -21, 78, -21, -18)
+polygon = PackedVector2Array(-21, -18, 21, -18, 21, 20, 18, 20, -17, 20, -21, 20, -21, -18)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qpnk0"]
 polygon = PackedVector2Array(-2, -18, -2, -128, 21, -128, 21, -18)
@@ -122,7 +122,7 @@ position = Vector2(0.5, 17.5)
 shape = SubResource("RectangleShape2D_y00ir")
 
 [node name="Player" parent="." instance=ExtResource("3_opiiy")]
-position = Vector2(-41, -79)
+position = Vector2(-41, -80)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_hasq4")
@@ -143,6 +143,7 @@ collision_mask = 2
 position = Vector2(0, 20)
 polygon = PackedVector2Array(20, 40, 65, 40, 65, 58, 20, 58)
 
+[connection signal="room_exited" from="Door" to="." method="on_save_requested"]
 [connection signal="body_entered" from="Down" to="." method="_on_down_entered"]
 [connection signal="gettable_got" from="crowbar" to="." method="on_pickup_pickedup"]
 [connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]

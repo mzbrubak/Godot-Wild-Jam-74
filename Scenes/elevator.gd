@@ -34,12 +34,12 @@ func on_interact(player):
 			return
 		var has_catalysts=player.check_inventory(needs_catalyst);
 		if has_catalysts==false:
-			textout="You lack the tools you need to fix the elevator panel."
+			textout="The elevator panel is broken, and you lack the tools you need to fix the elevator panel."
 			player.show_text(textout)
 			return
 		var has_components=player.check_inventory(needs_component);
 		if has_components==false:
-			textout="You need more (or different) parts to fix the elevator panel."
+			textout="The elevator panel is broken, but you do not have the parts you need to fix the elevator panel."
 			player.show_text(textout)
 			return
 		player.remove_from_inventory(needs_component)

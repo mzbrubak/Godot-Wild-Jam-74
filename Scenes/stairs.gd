@@ -38,3 +38,7 @@ func parse_flags():
 
 func on_pickup_pickedup(pickupindex):
 	pickup_flag_list[pickupindex]=true
+
+func on_save_requested():
+	SaveData.pickup_flag_list=pickup_flag_list.duplicate(true)
+	SaveData.inventory=$Player.inventory.duplicate(true)

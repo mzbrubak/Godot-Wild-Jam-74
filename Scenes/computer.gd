@@ -12,7 +12,7 @@ func on_interact(player):
 		player.show_text(textout)
 		SaveData.epilogue=true
 		SaveData.lightsout=false
-		$AudioStreamPlayer.start()
+		$AudioStreamPlayer2D.playing=true
 		despawnghost.emit()
 	else:
 		textout+="The monitor reads 'ERROR: EXPERIMENT HALTED. ELECTRICAL FAULTS DETECTED IN "
