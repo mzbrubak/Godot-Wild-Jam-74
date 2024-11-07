@@ -2,6 +2,7 @@ extends Node
 var machines_repaired=[false,false,false,false,false]
 var lightsout:bool=false
 var prologue=true#true until entering lab for first time
+var elevator_panel_fixed=false
 var epilogue=false#true after fixing the last machine and interacting with the computer
 var pickup_flag_list=[false,false,false,false,false]
 var searchable_flag_list=[false,false,false,false]

@@ -53,22 +53,27 @@ layout_mode = 2
 value = 100.0
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Music Volume"
 
 [node name="Music Volume" type="HSlider" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 value = 100.0
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "SFX Volume"
 
 [node name="SFX Volume" type="HSlider" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 value = 100.0
 
 [node name="Tutorial Dialogues" type="CheckBox" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Tutorial Dialogues"
 

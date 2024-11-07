@@ -30,10 +30,6 @@ autostart = true
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_vyo1o")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_nkqvg")
-volume_db = -12.89
-
 [node name="InteractionRange" type="Area2D" parent="."]
 visible = false
 collision_layer = 4

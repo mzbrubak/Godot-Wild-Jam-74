@@ -139,4 +139,6 @@ texture_scale = 6.0
 
 [connection signal="body_entered" from="THE_VOID/Area2D" to="THE_VOID" method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="THE_VOID/Area2D" to="THE_VOID" method="_on_interaction_range_body_exited"]
+[connection signal="room_exited" from="Door" to="." method="_on_save_requested"]
+[connection signal="room_exited" from="Door2" to="." method="_on_save_requested"]
 [connection signal="pause_requested" from="Player" to="PauseMenu" method="_on_player_pause_requested"]

@@ -6,6 +6,10 @@ var fixed=false
 var player_ref
 var destination
 
+func _ready():
+	if SaveData.elevator_panel_fixed:
+		fixed=true
+
 func on_interact(player):
 	var textout
 	if currentfloor==1 and SaveData.prologue==true:#first interaction

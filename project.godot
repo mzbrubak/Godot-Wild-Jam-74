@@ -57,10 +57,6 @@ window/size/viewport_height=360
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg")
-
 [global_group]
 
 Gettables=""

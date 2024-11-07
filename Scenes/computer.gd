@@ -11,7 +11,6 @@ func on_interact(player):
 		textout+="The monitor reads 'NO FAULTS DETECTED. RESUME EXPERIMENT (Y/N)?' You follow the on-screen instructions to resume the experiment. "
 		player.show_text(textout)
 		SaveData.epilogue=true
-		SaveData.lightsout=false
 		$AudioStreamPlayer2D.playing=true
 		despawnghost.emit()
 	else:

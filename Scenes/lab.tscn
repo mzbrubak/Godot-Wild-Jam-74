@@ -127,6 +127,7 @@ contents = {
 "wire": 1
 }
 search_text = "You found a part!"
+empty_text = "You've already searched this cabinet."
 full_sprite = 3
 empty_sprite = 7
 
@@ -138,8 +139,10 @@ contents = {
 "medium_screwdriver": 1,
 "wire": 7
 }
-search_text = "You found a screwdriver"
+search_text = "You found a screwdriver and 9 parts!"
+empty_text = "You've already searched this cabinet."
 full_sprite = 2
+locked_text = "This cabinet is locked, and you don't have the right key."
 
 [node name="Cabinet2" parent="NavigationRegion2D" groups=["Searchables"] instance=ExtResource("9_ji3dj")]
 position = Vector2(301, -124)
@@ -152,8 +155,10 @@ contents = {
 "small_screwdriver": 1,
 "wire": 3
 }
-search_text = "You found a screwdriver"
+search_text = "You found a screwdriver and 7 parts!"
+empty_text = "You've already searched this cabinet."
 empty_sprite = 4
+locked_text = "This cabinet is locked, and you don't have the right key."
 
 [node name="Cabinet3" parent="NavigationRegion2D" groups=["Searchables"] instance=ExtResource("9_ji3dj")]
 position = Vector2(-147, -61)
@@ -166,9 +171,11 @@ contents = {
 "switch": 1,
 "wire": 4
 }
-search_text = "You found a screwdriver"
+search_text = "You found a screwdriver and 8 parts!"
+empty_text = "You've already searched this cabinet."
 full_sprite = 1
 empty_sprite = 5
+locked_text = "This cabinet is locked, and you don't have the right key."
 
 [node name="RepairableMachine" parent="NavigationRegion2D" groups=["Machines"] instance=ExtResource("6_3h3qd")]
 position = Vector2(-87, 14)
