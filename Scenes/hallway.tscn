@@ -117,7 +117,7 @@ shape = SubResource("SegmentShape2D_jm4pw")
 shape = SubResource("SegmentShape2D_wj803")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+color = Color(0.185981, 0.185981, 0.185981, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(97, 70)
